@@ -5,8 +5,10 @@ on:
   push:
     branches:
       - main
+
   schedule:
     - cron: "*/30 * * * *"
+
   workflow_dispatch:
 
 permissions:
@@ -30,12 +32,7 @@ jobs:
         run: |
           set -e
 
-          yt-dlp \
-            --flat-playlist \
-            --playlist-end 1 \
-            --dump-single-json \
-            "https://www.youtube.com/channel/${CHANNEL_ID}/streams" \
-            > /tmp/latest.json
+          yt-dlp             --flat-playlist             --playlist-end 1             --dump-single-json             "https://www.youtube.com/channel/${CHANNEL_ID}/streams"             > /tmp/latest.json
 
           python3 - <<'PY'
           import json
@@ -45,12 +42,10 @@ jobs:
           data = json.loads(src.read_text(encoding="utf-8"))
 
           entries = data.get("entries") or []
-
           if not entries:
               raise SystemExit("Não foi encontrada nenhuma transmissão na aba /streams.")
 
           item = entries[0]
-
           video_id = item.get("id")
           title = item.get("title") or "Última live do GalindoGamerBR"
 
