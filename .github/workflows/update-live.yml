@@ -1,1 +1,78 @@
+name: Atualizar última live do YouTube
 
+on:
+  push:
+    branches:
+      - main
+
+  schedule:
+    - cron: "*/30 * * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-live:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar yt-dlp
+        run: |
+          python3 -m pip install --upgrade yt-dlp
+
+      - name: Buscar última transmissão do canal
+        env:
+          CHANNEL_ID: "UCZGlbfvpoitCSFTsWVWVAow"
+        run: |
+          set -e
+
+          yt-dlp             --flat-playlist             --playlist-end 1             --dump-single-json             "https://www.youtube.com/channel/${CHANNEL_ID}/streams"             > /tmp/latest.json
+
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          src = Path("/tmp/latest.json")
+          data = json.loads(src.read_text(encoding="utf-8"))
+
+          entries = data.get("entries") or []
+          if not entries:
+              raise SystemExit("Não foi encontrada nenhuma transmissão na aba /streams.")
+
+          item = entries[0]
+          video_id = item.get("id")
+          title = item.get("title") or "Última live do GalindoGamerBR"
+
+          if not video_id:
+              raise SystemExit("Não foi possível identificar o ID da última transmissão.")
+
+          url = item.get("webpage_url") or f"https://www.youtube.com/watch?v={video_id}"
+
+          result = {
+              "status": "ok",
+              "channelId": "UCZGlbfvpoitCSFTsWVWVAow",
+              "channel": "GalindoGamerBR",
+              "title": title,
+              "videoId": video_id,
+              "url": url,
+              "thumbnail": f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg"
+          }
+
+          Path("latest-live.json").write_text(
+              json.dumps(result, ensure_ascii=False, indent=2),
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Salvar atualização
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add latest-live.json
+          git diff --cached --quiet || git commit -m "Atualiza última live do YouTube"
+          git push
