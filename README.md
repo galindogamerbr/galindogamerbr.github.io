@@ -1,23 +1,21 @@
-# GalindoGamerBR — Site Oficial V4 FINAL
+# GalindoGamerBR — V4.4 Referência Visual + Animações
 
-Versão estática pronta para GitHub Pages.
+Versão atualizada do site do GalindoGamerBR.
 
-## Estrutura
-- `index.html` — página principal completa e interativa
-- `fazenda.html` — Fazenda Nova Aliança
-- `jogos.html` — jogos e simuladores
-- `programacao.html` — agendas Semana A e Semana B
-- `comunidade.html` — central da comunidade + regras/entrada VIP
-- `sobre.html` — sobre o Galindo
-- `parceiros.html` — parceiros
-- `contato.html` — contatos e redes
-- `privacidade.html` — política de privacidade
-- `style.css` — identidade visual e responsividade
-- `script.js` — menu mobile, navegação ativa e newsletter local
-- `assets/` — logo, foto oficial e artes visuais
+## O que foi corrigido
+- Hero da página inicial reconstruído usando a arte de referência enviada, preservando o visual e proporções do esboço.
+- Ícones funcionais de YouTube, Twitch, Kick, TikTok, Instagram e Discord no cabeçalho.
+- Hotspots clicáveis nos botões da arte principal.
+- Animações sutis: brilho, scan, partículas, hover, elevação de cards e revelação ao rolar.
+- Seção “Ao Vivo e em Destaque” reorganizada para não sobrepor texto de forma confusa.
+- Área VIP reforçada como grupo propositalmente seleto, voltado ao fortalecimento do canal, servidor e comunidade.
+- Texto “Sobre” com apelo emocional e história pessoal do Galindo.
+- Assets locais incluídos para evitar imagens quebradas.
 
-## Links configurados
-YouTube, Twitch, Kick, TikTok, Instagram, Discord, LivePix, ModSync e os dois grupos de WhatsApp (seguidores e VIP).
+## Como usar
+1. Extraia o ZIP inteiro.
+2. Mantenha a pasta `assets` junto dos arquivos HTML.
+3. Abra `index.html` para testar ou envie todos os arquivos para sua hospedagem.
 
-## Publicação
-No GitHub Pages, mantenha a origem em `main` e `/ (root)`. O arquivo de entrada é `index.html`.
+## Observação
+Os ícones das redes sociais usam Simple Icons via CDN. Se quiser operação 100% offline, substitua-os por SVGs locais.
