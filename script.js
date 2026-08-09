@@ -1,10 +1,12 @@
-document.addEventListener("DOMContentLoaded",()=>{
-const menu=document.querySelector(".menu"),nav=document.querySelector(".navlinks");
-if(menu&&nav){menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",open);});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false")}));}
-const year=document.getElementById("year"); if(year) year.textContent=new Date().getFullYear();
-const top=document.getElementById("backTop"); if(top){window.addEventListener("scroll",()=>top.classList.toggle("show",window.scrollY>500));top.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));}
-const form=document.getElementById("newsletterForm"); if(form){form.addEventListener("submit",e=>{e.preventDefault();const btn=form.querySelector("button");btn.textContent="Em breve ✓";btn.disabled=true;});}
-document.querySelectorAll("[data-modal]").forEach(b=>b.addEventListener("click",()=>{const m=document.getElementById(b.dataset.modal);if(m){m.classList.add("open");m.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");}}));
-document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>{const m=document.getElementById(b.dataset.close);if(m){m.classList.remove("open");m.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");}}));
-document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m){m.classList.remove("open");m.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");}}));
+const links={
+ youtube:'https://www.youtube.com/@galindogamerbr', twitch:'https://www.twitch.tv/galindogamerbr', kick:'https://kick.com/galindogamerbr', tiktok:'https://www.tiktok.com/@galindogamerbr', instagram:'https://www.instagram.com/galindogamerbr', discord:'https://discord.com/invite/JggtZ7qGY3', livepix:'https://livepix.gg/galindogamerbr', mods:'https://modsync.phmoreira.dev/', seguidores:'https://chat.whatsapp.com/JM27GGiEFzRFtUyuc8wUdk', vip:'https://chat.whatsapp.com/JpsiqErWdAx3pHqvVSbp7R'
+};
+function openExternal(url){window.open(url,'_blank','noopener,noreferrer')}
+document.addEventListener('DOMContentLoaded',()=>{
+ const menuBtn=document.querySelector('.menu'); const menu=document.querySelector('.mobile-menu');
+ if(menuBtn) menuBtn.addEventListener('click',()=>menu.classList.toggle('open'));
+ document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+ const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}}),{rootMargin:'-40% 0px -55% 0px'});
+ document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+ const form=document.querySelector('#newsletter'); if(form) form.addEventListener('submit',e=>{e.preventDefault();const email=form.querySelector('input').value.trim(); if(!email)return; localStorage.setItem('galindo_newsletter',email); form.innerHTML='<strong style="color:var(--gold)">Cadastro recebido. Obrigado por acompanhar o GalindoGamerBR!</strong>';});
 });

@@ -1,24 +1,23 @@
 # GalindoGamerBR — Site Oficial V4 FINAL
 
-Versão final consolidada do site estático do GalindoGamerBR.
+Versão estática pronta para GitHub Pages.
 
-## Incluído
-- Identidade visual do canal com logo e fotografia oficial atualizada.
-- Início, Fazenda Nova Aliança, Jogos, Programação, Comunidade, Sobre, Parceiros, Contato e Política de Privacidade.
-- Links oficiais de YouTube, Twitch, Kick, TikTok, Instagram e Discord.
-- LivePix para apoio/doações.
-- ModSync para os mods da Fazenda.
-- Grupo geral do WhatsApp.
-- Grupo VIP do WhatsApp e requisitos de entrada.
-- Modal interativo com passo a passo do VIP.
-- Menu responsivo, animações leves, botão voltar ao topo e interface mobile.
-- Site preparado para GitHub Pages e posterior associação ao domínio próprio.
+## Estrutura
+- `index.html` — página principal completa e interativa
+- `fazenda.html` — Fazenda Nova Aliança
+- `jogos.html` — jogos e simuladores
+- `programacao.html` — agendas Semana A e Semana B
+- `comunidade.html` — central da comunidade + regras/entrada VIP
+- `sobre.html` — sobre o Galindo
+- `parceiros.html` — parceiros
+- `contato.html` — contatos e redes
+- `privacidade.html` — política de privacidade
+- `style.css` — identidade visual e responsividade
+- `script.js` — menu mobile, navegação ativa e newsletter local
+- `assets/` — logo, foto oficial e artes visuais
 
-## Publicação no GitHub Pages
-1. Envie o conteúdo desta pasta para o repositório `galindogamerbr.github.io`.
-2. Em Settings > Pages, mantenha `main` e `/ (root)`.
-3. Aguarde o GitHub Pages publicar.
-4. Quando o domínio próprio estiver pronto no Registro.br, configure o domínio personalizado no mesmo painel.
+## Links configurados
+YouTube, Twitch, Kick, TikTok, Instagram, Discord, LivePix, ModSync e os dois grupos de WhatsApp (seguidores e VIP).
 
-## Observação
-O formulário de novidades nesta versão é somente visual; não há serviço externo de newsletter conectado.
+## Publicação
+No GitHub Pages, mantenha a origem em `main` e `/ (root)`. O arquivo de entrada é `index.html`.
