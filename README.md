@@ -1,6 +1,6 @@
-# GalindoGamerBR — Site Completo V1
+# GalindoGamerBR — 
 
-Site estático multipágina baseado no esboço aprovado.
+
 
 ## Páginas
 - index.html — Início
