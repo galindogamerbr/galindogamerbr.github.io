@@ -1,21 +1,41 @@
-# GalindoGamerBR — V4.4 Referência Visual + Animações
+# GalindoGamerBR — Site V5 Corrigido
 
-Versão atualizada do site do GalindoGamerBR.
+Versão revisada para publicação no GitHub Pages.
 
-## O que foi corrigido
-- Hero da página inicial reconstruído usando a arte de referência enviada, preservando o visual e proporções do esboço.
-- Ícones funcionais de YouTube, Twitch, Kick, TikTok, Instagram e Discord no cabeçalho.
-- Hotspots clicáveis nos botões da arte principal.
-- Animações sutis: brilho, scan, partículas, hover, elevação de cards e revelação ao rolar.
-- Seção “Ao Vivo e em Destaque” reorganizada para não sobrepor texto de forma confusa.
-- Área VIP reforçada como grupo propositalmente seleto, voltado ao fortalecimento do canal, servidor e comunidade.
-- Texto “Sobre” com apelo emocional e história pessoal do Galindo.
-- Assets locais incluídos para evitar imagens quebradas.
+## Correções desta versão
+- Corrigida a seção **Ao Vivo e em Destaque** para usar a arte completa sem sobreposição de texto duplicado.
+- Removidos números de seguidores/inscritos que estavam desatualizados na arte antiga, evitando informações inventadas.
+- Adicionadas animações suaves: brilho, movimento, hover, entrada das seções, destaque do ao vivo e efeitos nos cards.
+- Adicionados ícones e cores das redes sociais.
+- Programação atualizada para **Semana A** e **Semana B**.
+- Adicionado aviso de que o cronograma pode mudar por causa do trabalho na cidade.
+- Aviso de atualização da agenda aos domingos no TikTok, Instagram e YouTube.
+- Página de programação com as quatro plataformas de live: YouTube, Twitch, Kick e TikTok.
+- Instagram destacado para novidades e atualizações.
+- Revisão ortográfica dos textos novos.
 
-## Como usar
-1. Extraia o ZIP inteiro.
-2. Mantenha a pasta `assets` junto dos arquivos HTML.
-3. Abra `index.html` para testar ou envie todos os arquivos para sua hospedagem.
+## Programação
 
-## Observação
-Os ícones das redes sociais usam Simple Icons via CDN. Se quiser operação 100% offline, substitua-os por SVGs locais.
+### Semana A
+- Segunda: 08:45–11:15 | 14:00–20:00
+- Terça: 19:00–22:00
+- Quarta: 08:45–11:15 | 14:00–20:00
+- Quinta: 19:00–22:00
+- Sexta: 08:00–11:15 | 13:00–18:00
+- Sábado: Offline
+- Domingo: Offline
+
+### Semana B
+- Segunda: 19:00–22:00
+- Terça: 08:45–11:15 | 14:00–20:00
+- Quarta: 19:00–22:00
+- Quinta: 08:45–11:15 | 15:00–20:00
+- Sexta: Offline
+- Sábado: 13:00–18:00
+- Domingo: Offline
+
+## Publicação no GitHub Pages
+Substitua os arquivos do repositório pelos arquivos desta pasta, mantendo a pasta `assets` no mesmo nível dos arquivos HTML.
+Depois faça o commit e aguarde o GitHub Pages atualizar.
+
+Recomendação: após publicar, use `Ctrl + F5` para limpar o cache do navegador.
