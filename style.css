@@ -57,3 +57,39 @@ footer{border-top:1px solid #18232d;padding:28px 0;background:#02060a}.footer{di
 @media(max-width:1180px){.schedule-page-intro{display:block}.schedule-update{margin-top:18px;max-width:360px}.live-platforms{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.reference-hero{animation:none}.live-art-cta{right:12px;bottom:12px}.social-grid{grid-template-columns:1fr 1fr}.showcase-head h3{font-size:29px}.schedule-row{grid-template-columns:62px 1fr;font-size:11px}.schedule-note{font-size:9px}.live-platforms{grid-template-columns:1fr}.follow-updates{align-items:flex-start;flex-wrap:wrap}.follow-updates>a{margin-left:50px}.schedule-page-intro h2,.multiplatform-panel h2{font-size:36px}.program-grid-enhanced{grid-template-columns:1fr}.schedule-update{max-width:none}.social-showcase{min-height:420px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* ===== AJUSTES FINAIS — jogos sem corte + redes completas ===== */
+.game-media{height:auto;aspect-ratio:auto;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#111}
+.game-media img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;display:block;transition:transform .6s ease}
+.game:hover .game-media img{transform:scale(1.035)}
+.social-grid{grid-template-columns:repeat(2,1fr)}
+.platform-card.kick:hover{background:#17a84a1c}
+.platform-card.tiktok:hover{background:#161d241c}
+.contact-socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.contact-social{display:inline-flex;align-items:center;gap:8px;margin:0}
+.contact-social img{width:18px;height:18px;display:block}
+.instagram-contact{background:linear-gradient(145deg,#f8b02e,#dd2f75,#6532b8);border-color:transparent}
+.tiktok-contact{background:#161d24;border-color:#2b3946}
+@media(max-width:650px){.contact-socials{display:grid;grid-template-columns:1fr 1fr}.contact-social{width:100%}.social-grid{grid-template-columns:1fr 1fr}.game-media{aspect-ratio:auto}.game-media img{width:100%;height:auto}}
+
+
+/* ===== ANIMAÇÕES PREMIUM + ÚLTIMA LIVE AUTOMÁTICA ===== */
+html{scroll-behavior:smooth}
+.reveal{opacity:0;transform:translate3d(0,32px,0);filter:blur(3px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}.reveal.visible{opacity:1;transform:none;filter:none}
+.game,.platform-card,.stat,.live-card-art{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .28s ease,border-color .35s ease,box-shadow .35s ease,filter .35s ease}.game.tilting,.platform-card.tilting,.stat.tilting,.live-card-art.tilting{transition:none}
+.reference-hero:before{content:'';position:absolute;inset:-20%;background:radial-gradient(circle at 50% 45%,#d8b35b18,transparent 24%),linear-gradient(115deg,transparent 30%,#fff0 42%,#ffffff0d 50%,#fff0 58%);animation:heroSweep 10s ease-in-out infinite;pointer-events:none;z-index:1}
+.hero-scan,.hero-particles,.hero-hotspots{z-index:2}
+.latest-live-card{min-height:0;isolation:isolate}
+.latest-live-card .live-art-link{min-height:310px;overflow:hidden}
+.latest-live-card .live-art-link img{object-position:center;filter:saturate(.98) contrast(1.02)}
+.latest-live-card.loaded .live-art-link img{animation:liveImageIn .7s cubic-bezier(.2,.7,.2,1) both}
+.live-art-vignette{position:absolute;inset:0;background:linear-gradient(180deg,#02070d18 20%,#02070db5 100%);pointer-events:none}
+.live-art-badge{position:absolute;left:18px;top:18px;background:#ed1d2a;color:#fff;border-radius:6px;padding:8px 11px;font-size:10px;font-weight:900;letter-spacing:.08em;box-shadow:0 8px 24px #0008;animation:pulseLive 2s infinite}
+.live-art-info{position:absolute;left:20px;right:150px;bottom:18px;display:grid;gap:5px;text-align:left;color:#fff;text-shadow:0 2px 10px #000}
+.live-art-info strong{font-size:clamp(18px,2vw,30px);line-height:1.05}
+.live-art-info small{font-size:10px;color:#d3dce5}
+.latest-live-card:hover .live-art-vignette{background:linear-gradient(180deg,#02070d08 10%,#02070dd0 100%)}
+@keyframes heroSweep{0%,100%{transform:translateX(-8%);opacity:.25}50%{transform:translateX(8%);opacity:.75}}
+@keyframes liveImageIn{from{opacity:.35;transform:scale(1.03)}to{opacity:1;transform:scale(1)}}
+@media(max-width:650px){.latest-live-card .live-art-link{min-height:250px}.live-art-info{right:18px;bottom:56px}.live-art-info strong{font-size:19px}.live-art-badge{left:12px;top:12px}.reference-hero:before{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;filter:none}.reference-hero:before{animation:none}.latest-live-card.loaded .live-art-link img{animation:none}}
