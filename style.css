@@ -321,7 +321,7 @@ html{scroll-behavior:smooth}
   width:100% !important;
   height:auto !important;
   min-height:0 !important;
-  aspect-ratio:2048 / 305 !important;
+  aspect-ratio:2048 / 440 !important;
   padding:0 !important;
   margin:0 !important;
   overflow:hidden !important;
@@ -362,7 +362,7 @@ html{scroll-behavior:smooth}
 /* Desktop/tablet: mantém exatamente a proporção 2048 x 305. */
 @media (min-width:651px){
   .reference-hero{
-    aspect-ratio:2048 / 305 !important;
+    aspect-ratio:2048 / 440 !important;
     height:auto !important;
     background-size:100% 100% !important;
     background-position:center center !important;
@@ -395,4 +395,3 @@ html{scroll-behavior:smooth}
     animation:none !important;
   }
 }
-
