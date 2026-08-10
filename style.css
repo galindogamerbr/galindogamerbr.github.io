@@ -395,3 +395,111 @@ html{scroll-behavior:smooth}
     animation:none !important;
   }
 }
+
+/* =========================================================
+   GALINDOGAMERBR — HERO CINEMATIC V3
+   CORREÇÃO DE PROPORÇÃO + LINHA INFERIOR + HOVER
+   Arte real: 2048 x 305 px
+   ========================================================= */
+
+/* O Hero precisa ter exatamente a proporção da arte.
+   Não usar 2048x440 e não usar altura fixa. */
+.reference-hero{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:2048 / 305 !important;
+
+  padding:0 !important;
+  margin:0 !important;
+  overflow:hidden !important;
+
+  background-image:url('assets/hero-cinematic-clean.png') !important;
+  background-repeat:no-repeat !important;
+  background-color:#03070b !important;
+
+  /* Como o container e a imagem têm a mesma proporção,
+     a arte inteira aparece sem deformação nem corte. */
+  background-size:100% 100% !important;
+  background-position:center center !important;
+
+  transform:none !important;
+  scale:none !important;
+}
+
+/* Impede qualquer efeito de escala/tilt no próprio Hero
+   ou nos elementos que ficam sobre ele. */
+.reference-hero,
+.reference-hero *,
+.reference-hero:hover,
+.reference-hero *:hover{
+  transform-style:flat !important;
+}
+
+/* Não deixar o hover criar uma "caixa" maior que a arte. */
+.reference-hero .hotspot{
+  transform:none !important;
+  scale:none !important;
+  box-shadow:none !important;
+}
+
+.reference-hero .hotspot:hover,
+.reference-hero .hotspot:focus-visible{
+  transform:none !important;
+  scale:none !important;
+}
+
+/* A arte já contém o logo. */
+.reference-hero .hero-brand-overlay,
+.reference-hero .hero-brand-overlay img{
+  display:none !important;
+}
+
+/* Os efeitos não podem alterar a geometria da arte. */
+.reference-hero .hero-particles,
+.reference-hero .hero-scan,
+.reference-hero .hero-hotspots{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+}
+
+/* Desktop: mantém a linha inferior exatamente na base da arte. */
+@media (min-width:651px){
+  .reference-hero{
+    aspect-ratio:2048 / 305 !important;
+    height:calc(100vw * 305 / 2048) !important;
+    min-height:0 !important;
+    max-height:none !important;
+    background-size:100% 100% !important;
+    background-position:center bottom !important;
+  }
+}
+
+/* Celular: não estica e não corta.
+   A arte fica inteira dentro da área disponível. */
+@media (max-width:650px){
+  .reference-hero{
+    aspect-ratio:2048 / 305 !important;
+    height:calc(100vw * 305 / 2048) !important;
+    min-height:0 !important;
+    max-height:none !important;
+    background-size:100% 100% !important;
+    background-position:center bottom !important;
+  }
+
+  .reference-hero .hero-brand-overlay,
+  .reference-hero .hero-brand-overlay img{
+    display:none !important;
+  }
+}
+
+/* Remove transições de tamanho/escala do Hero. */
+.reference-hero,
+.reference-hero *,
+.reference-hero *::before,
+.reference-hero *::after{
+  transition-property:color, background-color, border-color, opacity !important;
+}
