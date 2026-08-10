@@ -147,3 +147,78 @@ html{scroll-behavior:smooth}
   .contact-panel{grid-template-columns:1fr;padding:24px}.contact-panel h2{font-size:40px}.contact-socials{display:grid;grid-template-columns:1fr 1fr}.contact-social{width:100%}
   .game-media{min-height:0;aspect-ratio:16/9!important}.game-media img{height:100%!important;object-fit:contain!important}
 }
+/* =========================================================
+   CORREÇÃO FINAL GALINDOGAMERBR
+   - Remove logo duplicado sobre o Hero
+   - Mantém o logo que já está na própria arte
+   - Corrige corte da thumbnail da Última Live
+   ========================================================= */
+
+/* O logo grande já faz parte da imagem do Hero.
+   Remove somente a camada HTML que estava duplicando. */
+.hero-brand-overlay {
+  display: none !important;
+}
+
+/* Última Live: mantém a proporção correta da thumbnail */
+.latest-live-card {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.latest-live-card .live-art-link {
+  min-height: 0 !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden;
+}
+
+.latest-live-card .live-art-link img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block;
+}
+
+/* Mantém os textos por cima da thumbnail */
+.latest-live-card .live-art-vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.latest-live-card .live-art-badge {
+  position: absolute;
+  z-index: 3;
+}
+
+.latest-live-card .live-art-info {
+  position: absolute;
+  z-index: 3;
+}
+
+.latest-live-card .live-art-cta {
+  position: absolute;
+  z-index: 3;
+}
+
+/* Evita que o card seja deformado pelo efeito 3D */
+.latest-live-card.tilting {
+  transform: perspective(900px)
+             rotateX(var(--rx,0deg))
+             rotateY(var(--ry,0deg));
+}
+
+/* Responsivo */
+@media (max-width: 650px) {
+  .latest-live-card .live-art-link {
+    aspect-ratio: 16 / 9 !important;
+    min-height: 0 !important;
+  }
+
+  .latest-live-card .live-art-link img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
