@@ -301,4 +301,108 @@ html{scroll-behavior:smooth}
     display:none !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR - CORREÇÃO FINAL DO HERO
+   ========================================================= */
 
+/* Remove qualquer logo adicional colocado sobre o Hero */
+.reference-hero .hero-brand-overlay {
+  display: none !important;
+}
+
+/* Hero principal */
+.reference-hero {
+  position: relative !important;
+  width: 100% !important;
+  height: clamp(300px, 19vw, 390px) !important;
+  min-height: 300px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  overflow: hidden !important;
+
+  aspect-ratio: auto !important;
+
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+
+  animation: none !important;
+}
+
+/* Impede camadas antigas de criarem outro fundo */
+.reference-hero::before,
+.reference-hero::after {
+  pointer-events: none !important;
+}
+
+/* Mantém os efeitos visuais atrás dos links */
+.reference-hero .hero-particles {
+  z-index: 2 !important;
+}
+
+.reference-hero .hero-scan {
+  z-index: 3 !important;
+}
+
+/* Áreas clicáveis ficam acima da arte */
+.reference-hero .hero-hotspots {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 10 !important;
+}
+
+/* Botões da arte */
+.reference-hero .hotspot {
+  z-index: 20 !important;
+}
+
+/* Desktop */
+@media (min-width: 1181px) {
+
+  .reference-hero {
+    height: clamp(300px, 19vw, 390px) !important;
+    min-height: 300px !important;
+
+    aspect-ratio: auto !important;
+
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+
+}
+
+/* Tablet */
+@media (max-width: 1180px) {
+
+  .reference-hero {
+    height: 320px !important;
+    min-height: 320px !important;
+
+    aspect-ratio: auto !important;
+
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+
+}
+
+/* Celular */
+@media (max-width: 650px) {
+
+  .reference-hero {
+    height: 300px !important;
+    min-height: 300px !important;
+
+    aspect-ratio: auto !important;
+
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+
+  .reference-hero .hero-brand-overlay {
+    display: none !important;
+  }
+
+}
