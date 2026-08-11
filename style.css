@@ -724,3 +724,175 @@ html{scroll-behavior:smooth}
     animation: none !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — ANIMAÇÃO CINEMATOGRÁFICA DO HERO
+   Não altera tamanho, proporção ou enquadramento da imagem
+   ========================================================= */
+
+.reference-hero {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+/* Faixa de luz cinematográfica */
+.reference-hero::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -45%;
+  width: 22%;
+  height: 140%;
+  pointer-events: none;
+  z-index: 5;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.03) 20%,
+    rgba(255,215,110,0.28) 50%,
+    rgba(255,255,255,0.08) 70%,
+    transparent 100%
+  );
+
+  filter: blur(3px);
+  transform: skewX(-18deg);
+  animation: galindoLightPass 7s ease-in-out infinite;
+}
+
+/* Brilho muito suave no cenário */
+.reference-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  background:
+    radial-gradient(
+      circle at 20% 45%,
+      rgba(255,190,60,0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 78% 40%,
+      rgba(70,120,255,0.10),
+      transparent 35%
+    );
+
+  animation: galindoAmbient 6s ease-in-out infinite alternate;
+}
+
+/* Partículas */
+.reference-hero .hero-particles {
+  z-index: 6 !important;
+  pointer-events: none !important;
+}
+
+.reference-hero .hero-particles::before,
+.reference-hero .hero-particles::after {
+  opacity: 0.55 !important;
+  animation: galindoParticles 5s ease-in-out infinite alternate !important;
+}
+
+/* Scanline */
+.reference-hero .hero-scan {
+  z-index: 7 !important;
+  opacity: 0.28 !important;
+  pointer-events: none !important;
+}
+
+/* Links invisíveis continuam clicáveis,
+   mas NÃO criam retângulo quando o mouse passa */
+.reference-hero .hero-hotspots {
+  z-index: 10 !important;
+}
+
+.reference-hero .hotspot {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.reference-hero .hotspot:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes galindoLightPass {
+
+  0% {
+    left: -45%;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  55% {
+    left: 125%;
+    opacity: 0.85;
+  }
+
+  65% {
+    left: 125%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+@keyframes galindoAmbient {
+
+  0% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes galindoParticles {
+
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(14px, -9px, 0);
+  }
+
+  100% {
+    transform: translate3d(-8px, 7px, 0);
+  }
+}
+
+/* Respeita usuários que desativaram animações */
+@media (prefers-reduced-motion: reduce) {
+
+  .reference-hero::before,
+  .reference-hero::after,
+  .reference-hero .hero-particles::before,
+  .reference-hero .hero-particles::after {
+    animation: none !important;
+  }
+
+}
