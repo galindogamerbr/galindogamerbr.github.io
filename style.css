@@ -182,7 +182,7 @@ html{scroll-behavior:smooth}
   width:100% !important;
 
   /* proporção declarada da arte */
-  height:calc(100vw * 305 / 2048) !important;
+  height:calc(100vw * 440 / 2048) !important;
 
   min-height:0 !important;
   max-height:none !important;
@@ -254,8 +254,8 @@ html{scroll-behavior:smooth}
       transparent 70%
     ) !important;
 
-  opacity:.18 !important;
-  animation:galindoHeroBreathing 7s ease-in-out infinite !important;
+  opacity:.28 !important;
+  animation:galindoHeroBreathing 8s ease-in-out infinite !important;
 
   transform:none !important;
 }
@@ -352,11 +352,11 @@ html{scroll-behavior:smooth}
 
 @keyframes galindoHeroBreathing{
   0%,100%{
-    opacity:.10;
+    opacity:.14;
   }
 
   50%{
-    opacity:.42;
+    opacity:.52;
   }
 }
 
@@ -367,7 +367,7 @@ html{scroll-behavior:smooth}
 @media(max-width:1180px){
   .reference-hero{
     width:100% !important;
-    height:calc(100vw * 305 / 2048) !important;
+    height:calc(100vw * 440 / 2048) !important;
     min-height:0 !important;
 
     background-size:100% auto !important;
@@ -382,7 +382,7 @@ html{scroll-behavior:smooth}
 @media(max-width:650px){
   .reference-hero{
     width:100% !important;
-    height:calc(100vw * 305 / 2048) !important;
+    height:calc(100vw * 440 / 2048) !important;
     min-height:0 !important;
 
     background-size:100% auto !important;
