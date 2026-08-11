@@ -1429,3 +1429,119 @@ html{scroll-behavior:smooth}
   }
 
 }
+/* =========================================================
+   GALINDOGAMERBR — HERO PREMIUM
+   Respiração cinematográfica
+   Imagem 100% estática
+   ========================================================= */
+
+.reference-hero {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+
+  /* Nunca movimenta ou amplia a arte */
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Brilho cinematográfico */
+.reference-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(217, 177, 79, 0.16) 0%,
+      rgba(217, 177, 79, 0.08) 24%,
+      rgba(217, 177, 79, 0.025) 45%,
+      transparent 68%
+    );
+
+  opacity: 0.25;
+
+  animation: galindoHeroBreathing 8s ease-in-out infinite;
+}
+
+/* Segundo brilho muito sutil */
+.reference-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255, 215, 120, 0.08) 0%,
+      transparent 58%
+    );
+
+  opacity: 0.15;
+
+  animation: galindoHeroBreathingSoft 8s ease-in-out infinite;
+}
+
+/* =========================================================
+   RESPIRAÇÃO PRINCIPAL
+   ========================================================= */
+
+@keyframes galindoHeroBreathing {
+
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.58;
+  }
+}
+
+/* =========================================================
+   RESPIRAÇÃO SECUNDÁRIA
+   ========================================================= */
+
+@keyframes galindoHeroBreathingSoft {
+
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+
+  50% {
+    opacity: 0.28;
+  }
+}
+
+/* =========================================================
+   GARANTE QUE A ARTE NÃO SE MOVA
+   ========================================================= */
+
+.reference-hero,
+.reference-hero:hover,
+.reference-hero img,
+.reference-hero:hover img {
+  transform: none !important;
+  scale: none !important;
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reference-hero::before,
+  .reference-hero::after {
+    animation: none !important;
+  }
+
+}
