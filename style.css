@@ -2684,14 +2684,112 @@ header + .hero,
     opacity: .20 !important;
   }
 }
-/* GALINDOGAMERBR — CORREÇÃO FINAL DOS ENCARDS (5 NA MESMA LINHA) */
-.games-grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;gap:14px !important;align-items:stretch !important}
-.games-grid .game{min-width:0 !important;height:100% !important;overflow:hidden !important}
-.games-grid .game-media{width:100% !important;aspect-ratio:16/9 !important;height:auto !important;min-height:0 !important;overflow:hidden !important;background:#070b10 !important}
-.games-grid .game-media img{display:block !important;width:100% !important;height:100% !important;object-fit:cover !important;object-position:center !important}
-.games-grid .game-body{min-height:185px !important;display:flex !important;flex-direction:column !important}
-.games-grid .game-body .arrow{margin-top:auto !important}
-.games-grid .game-dicas{border-color:rgba(224,176,64,.55) !important}
-@media (max-width:1200px){.games-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important}}
-@media (max-width:820px){.games-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
-@media (max-width:540px){.games-grid{grid-template-columns:1fr !important}}
+/* =========================================================
+   GALINDOGAMERBR — ENCARDS DOS JOGOS
+   CORREÇÃO DEFINITIVA
+   - 5 jogos na mesma linha no desktop
+   - mostra a arte inteira
+   - NÃO usa object-fit: cover
+   - NÃO corta topo, base ou laterais
+   - mantém a proporção original das artes
+   - cards com altura uniforme
+   ========================================================= */
+
+.games-grid{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  gap:14px !important;
+  align-items:stretch !important;
+}
+
+.games-grid .game{
+  min-width:0 !important;
+  width:100% !important;
+  height:100% !important;
+  overflow:hidden !important;
+}
+
+/* Área da arte: sem proporção forçada */
+.games-grid .game-media{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:auto !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#070b10 !important;
+  line-height:0 !important;
+}
+
+/* A imagem é exibida INTEIRA.
+   Nada de cover: isso era o que estava cortando as artes. */
+.games-grid .game-media img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  margin:0 auto !important;
+  transform:none !important;
+}
+
+/* Hover sem ampliar a imagem.
+   O zoom antigo também podia esconder as bordas da arte. */
+.games-grid .game:hover .game-media img,
+.games-grid .game:hover .game-media img{
+  transform:none !important;
+}
+
+/* Corpo dos cards alinhado */
+.games-grid .game-body{
+  min-height:185px !important;
+  height:auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  padding:18px !important;
+}
+
+.games-grid .game-body .arrow{
+  margin-top:auto !important;
+}
+
+/* Títulos longos continuam limpos dentro do card */
+.games-grid .game h3{
+  font-size:clamp(21px,1.55vw,29px) !important;
+  line-height:1.05 !important;
+  margin:9px 0 !important;
+}
+
+/* Destaque do card Dicas */
+.games-grid .game-dicas{
+  border-color:rgba(224,176,64,.55) !important;
+}
+
+/* Tablet */
+@media (max-width:1200px){
+  .games-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+}
+
+/* Tablet pequeno */
+@media (max-width:820px){
+  .games-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+/* Celular */
+@media (max-width:540px){
+  .games-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .games-grid .game h3{
+    font-size:26px !important;
+  }
+}
