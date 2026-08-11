@@ -586,3 +586,141 @@ html{scroll-behavior:smooth}
     height:auto !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — HERO CINEMATIC V6
+   Animação cinematográfica sem deformar a imagem
+   ========================================================= */
+
+.reference-hero {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+/* Luz cinematográfica passando pelo cenário */
+.reference-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -35%;
+  width: 28%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.02) 25%,
+    rgba(217,177,79,0.16) 50%,
+    rgba(255,255,255,0.02) 75%,
+    transparent 100%
+  );
+  transform: skewX(-12deg);
+  animation: galindoCinematicLight 9s ease-in-out infinite;
+}
+
+/* Partículas discretas */
+.reference-hero .hero-particles {
+  z-index: 6 !important;
+  pointer-events: none !important;
+}
+
+.reference-hero .hero-particles::before,
+.reference-hero .hero-particles::after {
+  opacity: 0.35 !important;
+  animation: galindoParticles 7s ease-in-out infinite alternate !important;
+}
+
+/* Scanline bem discreta, estilo HUD */
+.reference-hero .hero-scan {
+  z-index: 7 !important;
+  opacity: 0.22 !important;
+  pointer-events: none !important;
+  animation: galindoScan 6s linear infinite !important;
+}
+
+/* Mantém os links clicáveis acima de todos os efeitos */
+.reference-hero .hero-hotspots {
+  z-index: 10 !important;
+}
+
+/* Pequeno brilho nos botões da própria arte,
+   sem criar retângulo no hover */
+.reference-hero .hotspot {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.reference-hero .hotspot:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Linha dourada passando pelo Hero */
+@keyframes galindoCinematicLight {
+  0% {
+    left: -35%;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  48% {
+    left: 115%;
+    opacity: 0.75;
+  }
+
+  55% {
+    left: 115%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 115%;
+    opacity: 0;
+  }
+}
+
+/* Movimento muito leve das partículas */
+@keyframes galindoParticles {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(10px, -7px, 0);
+  }
+
+  100% {
+    transform: translate3d(-6px, 8px, 0);
+  }
+}
+
+/* Scanline */
+@keyframes galindoScan {
+  0% {
+    background-position: 0 -220px;
+  }
+
+  100% {
+    background-position: 0 220px;
+  }
+}
+
+/* Quem prefere reduzir movimento não recebe animações */
+@media (prefers-reduced-motion: reduce) {
+  .reference-hero::after,
+  .reference-hero .hero-particles::before,
+  .reference-hero .hero-particles::after,
+  .reference-hero .hero-scan {
+    animation: none !important;
+  }
+}
