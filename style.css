@@ -1711,3 +1711,137 @@ html{scroll-behavior:smooth}
     opacity:.12 !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — CABEÇALHO ORGANIZADO
+   Logo | Menu central | Redes sociais
+   ========================================================= */
+
+@media (min-width: 1181px){
+
+  .site-header .nav{
+    width:min(var(--max),calc(100% - 56px));
+    max-width:var(--max);
+    height:68px;
+    margin:0 auto;
+
+    display:grid;
+    grid-template-columns:260px minmax(0,1fr) auto;
+    align-items:center;
+    column-gap:28px;
+
+    padding:0;
+  }
+
+  /* LOGO / IDENTIDADE */
+  .site-header .brand{
+    width:260px;
+    margin:0 !important;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:10px;
+  }
+
+  .site-header .brand img{
+    width:50px;
+    height:50px;
+    flex:0 0 50px;
+  }
+
+  .site-header .brand strong{
+    font-size:21px;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .site-header .brand small{
+    margin-top:3px;
+    font-size:8px;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  /* MENU PRINCIPAL */
+  .site-header .links{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    min-width:0;
+    margin:0;
+  }
+
+  .site-header .links a{
+    font-size:10px;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .site-header .links a:after{
+    bottom:-10px;
+  }
+
+  /* REDES SOCIAIS */
+  .site-header .socials{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:7px;
+    margin:0;
+  }
+
+  .site-header .social{
+    width:32px;
+    height:32px;
+    flex:0 0 32px;
+  }
+}
+
+/* =========================================================
+   TELAS INTERMEDIÁRIAS
+   ========================================================= */
+
+@media (min-width:1181px) and (max-width:1450px){
+
+  .site-header .nav{
+    width:calc(100% - 36px);
+    grid-template-columns:220px minmax(0,1fr) auto;
+    column-gap:18px;
+  }
+
+  .site-header .brand{
+    width:220px;
+  }
+
+  .site-header .links{
+    gap:15px;
+  }
+
+  .site-header .links a{
+    font-size:9px;
+  }
+}
+
+/* =========================================================
+   MOBILE — mantém o comportamento atual
+   ========================================================= */
+
+@media (max-width:1180px){
+
+  .site-header .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:calc(100% - 36px);
+    height:68px;
+    margin:0 auto;
+  }
+
+  .site-header .brand{
+    margin-right:auto !important;
+  }
+
+  .site-header .menu{
+    margin-left:auto;
+  }
+}
