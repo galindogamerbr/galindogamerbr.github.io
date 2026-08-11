@@ -2506,3 +2506,181 @@ header + .hero,
     opacity:.40 !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — HERO FINAL SEM FAIXAS
+   Proporção visual alvo: 1609 x 573
+   Imagem estática + respiração de luz, sem deformar a arte
+   Cole este bloco NO FINAL do style.css
+   ========================================================= */
+
+/* Remove qualquer espaço externo entre header, Hero e próxima seção */
+.site-header + .hero,
+.site-header + .reference-hero,
+.hero,
+.reference-hero {
+  margin-top: 0 !important;
+}
+
+/* Hero: ocupa exatamente a proporção da arte */
+.hero,
+.reference-hero {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 1609 / 573 !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+  background-color: #03070b !important;
+  background-image: url('assets/hero-cinematic-clean.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Se o Hero usa <img>, mantém a imagem proporcional e sem espaços */
+.hero > img,
+.reference-hero > img,
+.hero .hero-cinematic-image,
+.reference-hero .hero-cinematic-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Nenhum container interno pode criar faixa/espaço */
+.hero .container,
+.reference-hero .container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Desliga efeitos antigos que estavam gerando feixes/scan/partículas */
+.hero .hero-particles,
+.hero .hero-scan,
+.reference-hero .hero-particles,
+.reference-hero .hero-scan {
+  display: none !important;
+}
+
+/* =========================================================
+   RESPIRAÇÃO PREMIUM
+   A imagem NÃO se move. Apenas a iluminação ambiente pulsa.
+   ========================================================= */
+.hero::before,
+.reference-hero::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 40 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(
+      ellipse 65% 78% at 27% 38%,
+      rgba(255,205,105,.14) 0%,
+      rgba(255,190,70,.045) 36%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 58% 72% at 80% 36%,
+      rgba(70,120,255,.055) 0%,
+      transparent 68%
+    ) !important;
+  opacity: .18 !important;
+  transform: none !important;
+  animation: GalindoHeroRespiracao 8s ease-in-out infinite !important;
+}
+
+/* Brilho muito discreto nos faróis/giroflex, sem alterar a arte */
+.hero::after,
+.reference-hero::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 41 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(circle at 75% 77%, rgba(255,240,205,.10) 0%, transparent 7%),
+    radial-gradient(circle at 88% 77%, rgba(255,240,205,.08) 0%, transparent 7%) !important;
+  opacity: .30 !important;
+  transform: none !important;
+  animation: GalindoHeroLuzes 4.8s ease-in-out infinite !important;
+}
+
+/* Impede qualquer hover/efeito de deslocar a arte */
+.hero,
+.reference-hero,
+.hero:hover,
+.reference-hero:hover,
+.hero img,
+.reference-hero img,
+.hero:hover img,
+.reference-hero:hover img {
+  transform: none !important;
+  scale: none !important;
+}
+
+/* A seção seguinte encosta no Hero. Sem faixa preta intermediária. */
+.hero + section,
+.reference-hero + section {
+  margin-top: 0 !important;
+  padding-top: 28px !important;
+}
+
+@keyframes GalindoHeroRespiracao {
+  0%, 100% { opacity: .12; }
+  50%      { opacity: .30; }
+}
+
+@keyframes GalindoHeroLuzes {
+  0%, 100% { opacity: .22; }
+  50%      { opacity: .48; }
+}
+
+/* Responsivo: mesma proporção e sem faixas */
+@media (max-width: 1180px) {
+  .hero,
+  .reference-hero {
+    aspect-ratio: 1609 / 573 !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero,
+  .reference-hero {
+    aspect-ratio: 1609 / 573 !important;
+    height: auto !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero::after,
+  .reference-hero::before,
+  .reference-hero::after {
+    animation: none !important;
+    opacity: .20 !important;
+  }
+}
