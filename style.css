@@ -998,3 +998,103 @@ html{scroll-behavior:smooth}
     animation: none;
   }
 }
+/* =====================================================
+   ANIMAÇÃO CINEMATOGRÁFICA DO HERO
+   ===================================================== */
+
+.reference-hero {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* camada de luz respirando */
+.reference-hero .hero-scan {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+
+    display: block !important;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(255, 210, 80, 0.12) 0%,
+            rgba(255, 210, 80, 0.055) 30%,
+            transparent 65%
+        ) !important;
+
+    opacity: 0.25 !important;
+
+    transform: scale(1) !important;
+
+    animation: heroRespira 6s ease-in-out infinite !important;
+}
+
+/* brilho passando lentamente pelo cenário */
+.reference-hero .hero-scan::after {
+    content: "" !important;
+
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -30% !important;
+
+    width: 25% !important;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 220, 120, 0.10),
+        transparent
+    ) !important;
+
+    transform: skewX(-15deg) !important;
+
+    animation: heroBrilho 10s ease-in-out infinite !important;
+}
+
+/* respiração */
+@keyframes heroRespira {
+
+    0% {
+        opacity: 0.20;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform: scale(1.018);
+    }
+
+    100% {
+        opacity: 0.20;
+        transform: scale(1);
+    }
+}
+
+/* passagem de luz */
+@keyframes heroBrilho {
+
+    0% {
+        left: -30%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    65% {
+        opacity: 0;
+    }
+
+    100% {
+        left: 120%;
+        opacity: 0;
+    }
+}
