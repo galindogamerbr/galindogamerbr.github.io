@@ -1845,3 +1845,31 @@ html{scroll-behavior:smooth}
     margin-left:auto;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — REDUÇÃO DO ESPAÇO ENTRE HERO E CONTEÚDO
+   ========================================================= */
+
+section{
+    padding-top:36px !important;
+    padding-bottom:55px;
+}
+
+/* Primeira seção depois do Hero */
+.reference-hero + section{
+    padding-top:36px !important;
+}
+
+/* Cabeçalho da seção */
+.reference-hero + section .section-head{
+    margin-bottom:24px;
+}
+
+/* Título */
+.reference-hero + section .section-head h2{
+    margin-top:4px;
+}
+
+/* Mantém o restante da página respirando normalmente */
+.reference-hero + section .grid-live{
+    margin-top:0;
+}
