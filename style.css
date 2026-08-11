@@ -167,99 +167,132 @@ html{scroll-behavior:smooth}
 
 /* =========================================================
    GALINDOGAMERBR — HERO FINAL
-   Arte original: 2048 x 305 px
-   Imagem estática + respiração cinematográfica
+   ARTE ORIGINAL SEM DEFORMAÇÃO OU CORTE
+   ÚNICO EFEITO: RESPIRAÇÃO CINEMATOGRÁFICA
    ========================================================= */
+
+/*
+   IMPORTANTE:
+   A arte é mantida na proporção natural.
+   NÃO usar background-size:100% 100%.
+*/
 
 .reference-hero{
   position:relative !important;
   width:100% !important;
-  height:auto !important;
+
+  /* proporção declarada da arte */
+  height:calc(100vw * 305 / 2048) !important;
+
   min-height:0 !important;
   max-height:none !important;
+
   margin:0 !important;
   padding:0 !important;
+
   overflow:hidden !important;
   border:0 !important;
-  background:#03070b !important;
+
+  background-color:#03070b !important;
+  background-image:url('assets/hero-cinematic-clean.png') !important;
+  background-repeat:no-repeat !important;
+
+  /*
+     Mantém a proporção da imagem.
+     A altura do container acompanha a mesma proporção.
+  */
+  background-size:100% auto !important;
+  background-position:center top !important;
+
   isolation:isolate !important;
   transform:none !important;
   scale:none !important;
   animation:none !important;
-
-  /* A proporção real da arte evita achatamento/corte */
-  aspect-ratio:2048 / 305 !important;
-
-  background-image:url('assets/hero-cinematic-clean.png') !important;
-  background-repeat:no-repeat !important;
-  background-size:100% 100% !important;
-  background-position:center center !important;
 }
 
-/* Segurança: se o HTML usa a imagem diretamente, ela ocupa o Hero inteiro
-   sem crop, zoom ou deformação. */
+/*
+   Caso o Hero use a imagem diretamente no HTML,
+   ela também permanece na proporção natural.
+*/
 .reference-hero .hero-cinematic-image{
   display:block !important;
   width:100% !important;
   height:auto !important;
   max-width:none !important;
   object-fit:contain !important;
-  object-position:center center !important;
+  object-position:center top !important;
   transform:none !important;
   scale:none !important;
 }
 
-/* A arte já possui o logo correto */
+/* A arte já possui o logo */
 .reference-hero .hero-brand-overlay,
-.hero-brand-overlay,
-.reference-hero .hero-brand-overlay img{
+.reference-hero .hero-brand-overlay img,
+.hero-brand-overlay{
   display:none !important;
 }
 
-/* ÚNICO efeito do Hero: respiração dourada */
+/* =========================================================
+   RESPIRAÇÃO CINEMATOGRÁFICA
+   Sem mover, ampliar ou deformar a arte.
+   ========================================================= */
+
 .reference-hero::before{
   content:"" !important;
   position:absolute !important;
   inset:0 !important;
+
   z-index:2 !important;
   pointer-events:none !important;
 
-  background:radial-gradient(
-    ellipse at 50% 48%,
-    rgba(217,177,79,.10) 0%,
-    rgba(217,177,79,.035) 30%,
-    transparent 65%
-  ) !important;
+  background:
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(217,177,79,.22) 0%,
+      rgba(217,177,79,.09) 28%,
+      rgba(217,177,79,.025) 50%,
+      transparent 70%
+    ) !important;
 
-  opacity:.12 !important;
-  animation:galindoHeroBreathing 8s ease-in-out infinite !important;
+  opacity:.18 !important;
+  animation:galindoHeroBreathing 7s ease-in-out infinite !important;
+
+  transform:none !important;
 }
 
-/* Sem faixa, partículas ou scanline */
+/* Nenhuma faixa, partícula ou scanline */
 .reference-hero::after,
 .reference-hero .hero-particles,
 .reference-hero .hero-scan{
   display:none !important;
 }
 
-/* Hotspots invisíveis, mas clicáveis */
+/* =========================================================
+   HOTSPOTS — INVISÍVEIS E CLICÁVEIS
+   ========================================================= */
+
 .reference-hero .hero-hotspots{
   position:absolute !important;
   inset:0 !important;
+
   width:100% !important;
   height:100% !important;
+
   z-index:10 !important;
   pointer-events:none !important;
 }
 
 .reference-hero .hotspot{
   position:absolute !important;
-  pointer-events:auto !important;
+
   display:block !important;
+  pointer-events:auto !important;
+
   background:transparent !important;
   border:0 !important;
   box-shadow:none !important;
   outline:none !important;
+
   transform:none !important;
   scale:none !important;
   transition:none !important;
@@ -278,319 +311,102 @@ html{scroll-behavior:smooth}
 }
 
 /* Áreas clicáveis das plataformas */
-.reference-hero .hotspot.live{left:2.55%;bottom:5.5%;width:10.2%;height:11%}
-.reference-hero .hotspot.twitch{left:13.6%;bottom:5.5%;width:7.6%;height:11%}
-.reference-hero .hotspot.kick{left:22%;bottom:5.5%;width:7.3%;height:11%}
-.reference-hero .hotspot.youtube{left:30%;bottom:5.5%;width:8%;height:11%}
-.reference-hero .hotspot.tiktok{left:38.2%;bottom:5.5%;width:8.1%;height:11%}
-
-@keyframes galindoHeroBreathing{
-  0%,100%{opacity:.12}
-  50%{opacity:.34}
+.reference-hero .hotspot.live{
+  left:2.55%;
+  bottom:5.5%;
+  width:10.2%;
+  height:11%;
 }
 
-@media(max-width:1180px){
-  .reference-hero{
-    aspect-ratio:2048 / 305 !important;
-  }
+.reference-hero .hotspot.twitch{
+  left:13.6%;
+  bottom:5.5%;
+  width:7.6%;
+  height:11%;
 }
 
-@media(max-width:650px){
-  .reference-hero{
-    aspect-ratio:2048 / 305 !important;
-    width:100% !important;
-    height:auto !important;
-    min-height:0 !important;
-    background-size:100% 100% !important;
-    background-position:center center !important;
-  }
-
-  .reference-hero .hotspot.tiktok{
-    display:none !important;
-  }
+.reference-hero .hotspot.kick{
+  left:22%;
+  bottom:5.5%;
+  width:7.3%;
+  height:11%;
 }
 
-@media(prefers-reduced-motion:reduce){
-  .reference-hero::before{
-    animation:none !important;
-    opacity:.12 !important;
-  }
+.reference-hero .hotspot.youtube{
+  left:30%;
+  bottom:5.5%;
+  width:8%;
+  height:11%;
+}
+
+.reference-hero .hotspot.tiktok{
+  left:38.2%;
+  bottom:5.5%;
+  width:8.1%;
+  height:11%;
 }
 
 /* =========================================================
-   GALINDOGAMERBR — HERO DEFINITIVO
-   CORREÇÃO DE CORTE + EFEITO CINEMATOGRÁFICO VISÍVEL
-   Arte: 2048 x 305
-   ========================================================= */
-
-.reference-hero{
-  position:relative !important;
-
-  /* FORÇA A ALTURA REAL DA ARTE */
-  width:100% !important;
-  height:calc(100vw * 305 / 2048) !important;
-
-  min-height:0 !important;
-  max-height:none !important;
-
-  margin:0 !important;
-  padding:0 !important;
-
-  overflow:hidden !important;
-  border:0 !important;
-
-  background-color:#03070b !important;
-  background-image:url('assets/hero-cinematic-clean.png') !important;
-  background-repeat:no-repeat !important;
-
-  /* NÃO CORTA A ARTE */
-  background-size:100% 100% !important;
-  background-position:center center !important;
-
-  aspect-ratio:auto !important;
-
-  isolation:isolate !important;
-  transform:none !important;
-  scale:none !important;
-}
-
-
-/* =========================================================
-   SE O HTML ESTIVER USANDO <img>
-   ========================================================= */
-
-.reference-hero .hero-cinematic-image{
-  display:block !important;
-
-  width:100% !important;
-  height:100% !important;
-
-  max-width:none !important;
-  min-width:0 !important;
-
-  object-fit:fill !important;
-  object-position:center center !important;
-
-  transform:none !important;
-  scale:none !important;
-}
-
-
-/* =========================================================
-   NÃO DUPLICAR LOGO
-   ========================================================= */
-
-.reference-hero .hero-brand-overlay,
-.reference-hero .hero-brand-overlay img,
-.hero-brand-overlay{
-  display:none !important;
-}
-
-
-/* =========================================================
-   EFEITO CINEMATOGRÁFICO — RESPIRAÇÃO DOURADA
-   AGORA VISÍVEL
-   ========================================================= */
-
-.reference-hero::before{
-  content:"" !important;
-
-  position:absolute !important;
-  inset:0 !important;
-
-  z-index:2 !important;
-  pointer-events:none !important;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 48%,
-      rgba(217,177,79,.32) 0%,
-      rgba(217,177,79,.14) 28%,
-      rgba(217,177,79,.045) 52%,
-      transparent 72%
-    ) !important;
-
-  opacity:.30 !important;
-
-  animation:
-    galindoHeroBreathing 5s ease-in-out infinite !important;
-
-  transform:none !important;
-}
-
-
-/* =========================================================
-   SEGUNDO EFEITO — FEIXE DE LUZ CINEMATOGRÁFICO
-   PASSA SUAVEMENTE PELA ARTE
-   ========================================================= */
-
-.reference-hero::after{
-  content:"" !important;
-
-  position:absolute !important;
-
-  top:-20% !important;
-  left:-45% !important;
-
-  width:32% !important;
-  height:140% !important;
-
-  z-index:3 !important;
-  pointer-events:none !important;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.00) 20%,
-      rgba(255,220,130,0.12) 48%,
-      rgba(255,255,255,0.18) 52%,
-      rgba(255,220,130,0.05) 65%,
-      transparent 100%
-    ) !important;
-
-  transform:skewX(-18deg) !important;
-
-  animation:galindoHeroLightSweep 9s ease-in-out infinite !important;
-}
-
-
-/* =========================================================
-   HOTSPOTS — CONTINUAM CLICÁVEIS
-   ========================================================= */
-
-.reference-hero .hero-hotspots{
-  position:absolute !important;
-  inset:0 !important;
-
-  width:100% !important;
-  height:100% !important;
-
-  z-index:10 !important;
-
-  pointer-events:none !important;
-}
-
-.reference-hero .hotspot{
-  position:absolute !important;
-
-  display:block !important;
-
-  pointer-events:auto !important;
-
-  background:transparent !important;
-  border:0 !important;
-  box-shadow:none !important;
-  outline:none !important;
-
-  transform:none !important;
-  scale:none !important;
-
-  transition:none !important;
-}
-
-
-/* =========================================================
-   DESATIVA SOMENTE OS EFEITOS ANTIGOS
-   ========================================================= */
-
-.reference-hero .hero-particles,
-.reference-hero .hero-scan{
-  display:none !important;
-}
-
-
-/* =========================================================
-   ANIMAÇÃO DA RESPIRAÇÃO
+   ANIMAÇÃO
    ========================================================= */
 
 @keyframes galindoHeroBreathing{
-
   0%,100%{
-    opacity:.18;
+    opacity:.10;
   }
 
   50%{
-    opacity:.62;
+    opacity:.42;
   }
-
 }
-
-
-/* =========================================================
-   ANIMAÇÃO DO FEIXE DE LUZ
-   ========================================================= */
-
-@keyframes galindoHeroLightSweep{
-
-  0%,55%{
-    left:-45%;
-    opacity:0;
-  }
-
-  62%{
-    opacity:.9;
-  }
-
-  82%{
-    left:125%;
-    opacity:.25;
-  }
-
-  100%{
-    left:135%;
-    opacity:0;
-  }
-
-}
-
 
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media(max-width:1180px){
-
   .reference-hero{
     width:100% !important;
     height:calc(100vw * 305 / 2048) !important;
+    min-height:0 !important;
 
-    aspect-ratio:auto !important;
-
-    background-size:100% 100% !important;
-    background-position:center center !important;
+    background-size:100% auto !important;
+    background-position:center top !important;
   }
-
 }
-
 
 /* =========================================================
    CELULAR
    ========================================================= */
 
 @media(max-width:650px){
-
   .reference-hero{
     width:100% !important;
-
     height:calc(100vw * 305 / 2048) !important;
-
     min-height:0 !important;
 
-    aspect-ratio:auto !important;
-
-    background-size:100% 100% !important;
-    background-position:center center !important;
+    background-size:100% auto !important;
+    background-position:center top !important;
   }
 
   .reference-hero .hero-cinematic-image{
     width:100% !important;
-    height:100% !important;
-    object-fit:fill !important;
+    height:auto !important;
+    object-fit:contain !important;
   }
 
   .reference-hero .hotspot.tiktok{
     display:none !important;
   }
+}
 
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+  .reference-hero::before{
+    animation:none !important;
+    opacity:.10 !important;
+  }
 }
