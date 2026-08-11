@@ -1098,3 +1098,66 @@ html{scroll-behavior:smooth}
         opacity: 0;
     }
 }
+/* =========================================================
+   ANIMAÇÃO CINEMATOGRÁFICA - HERO PRINCIPAL
+   ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Mantém a imagem exatamente como está */
+.hero::before {
+  z-index: 0;
+}
+
+/* Luz suave respirando */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(255, 210, 80, 0.12) 0%,
+      rgba(255, 210, 80, 0.05) 30%,
+      transparent 65%
+    );
+
+  opacity: 0.25;
+  animation: galindoHeroRespira 6s ease-in-out infinite;
+}
+
+/* Coloca todo o conteúdo do Hero acima da animação */
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Respiração muito discreta */
+@keyframes galindoHeroRespira {
+  0% {
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.52;
+  }
+
+  100% {
+    opacity: 0.18;
+  }
+}
+
+/* Respeita redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  .hero::after {
+    animation: none;
+    opacity: 0.25;
+  }
+}
