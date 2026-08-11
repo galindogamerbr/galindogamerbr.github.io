@@ -896,3 +896,105 @@ html{scroll-behavior:smooth}
   }
 
 }
+/* =========================================================
+   HERO CINEMATIC — RESPIRAÇÃO DISCRETA
+   ========================================================= */
+
+.reference-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Luz cinematográfica respirando sobre o Hero */
+.reference-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(255, 205, 70, 0.10) 0%,
+      rgba(255, 205, 70, 0.045) 28%,
+      rgba(0, 0, 0, 0) 62%
+    );
+
+  opacity: 0.35;
+  transform: scale(1);
+  animation: heroBreathing 6s ease-in-out infinite;
+}
+
+/* Pequeno brilho horizontal cinematográfico */
+.reference-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -35%;
+  width: 35%;
+
+  z-index: 3;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 215, 90, 0.00) 20%,
+    rgba(255, 215, 90, 0.055) 50%,
+    rgba(255, 215, 90, 0.00) 80%,
+    transparent 100%
+  );
+
+  transform: skewX(-12deg);
+  animation: heroLightSweep 12s ease-in-out infinite;
+}
+
+/* Respiração */
+@keyframes heroBreathing {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.60;
+    transform: scale(1.025);
+  }
+}
+
+/* Passagem de luz bem lenta */
+@keyframes heroLightSweep {
+  0% {
+    left: -40%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0;
+  }
+
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .reference-hero::before,
+  .reference-hero::after {
+    animation: none;
+  }
+}
