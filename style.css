@@ -1873,3 +1873,76 @@ section{
 .reference-hero + section .grid-live{
     margin-top:0;
 }
+/* =========================================================
+   GALINDOGAMERBR — CORREÇÃO DEFINITIVA DOS ESPAÇOS DO HERO
+   ========================================================= */
+
+/* O HERO encosta diretamente no cabeçalho */
+.site-header + .hero,
+header + .hero,
+.hero{
+    margin-top:0 !important;
+    padding-top:0 !important;
+}
+
+/* Remove qualquer espaço interno criado por section */
+.hero{
+    margin-bottom:0 !important;
+}
+
+/* A primeira seção depois do Hero começa logo abaixo dele */
+.hero + section{
+    margin-top:0 !important;
+    padding-top:28px !important;
+}
+
+/* Mantém um pequeno respiro somente antes do título */
+.hero + section .section-head{
+    margin-top:0 !important;
+    margin-bottom:24px !important;
+}
+
+/* =========================================================
+   GARANTE QUE A ARTE FIQUE COLADA NO TOPO DO HERO
+   ========================================================= */
+
+.hero{
+    background-position:center top !important;
+    background-repeat:no-repeat !important;
+    background-size:100% auto !important;
+}
+
+/* =========================================================
+   NÃO DEIXA CONTEÚDO INVISÍVEL CRIAR ESPAÇO
+   ========================================================= */
+
+.hero .container{
+    margin-top:0 !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+}
+
+/* Caso existam elementos internos da versão antiga */
+.hero .hero-copy,
+.hero .portrait{
+    margin-top:0 !important;
+}
+
+/* =========================================================
+   RESPIRAÇÃO — MANTÉM O EFEITO
+   ========================================================= */
+
+.hero::after{
+    opacity:.22 !important;
+    animation:galindoHeroRespiracaoFinal 8s ease-in-out infinite !important;
+}
+
+@keyframes galindoHeroRespiracaoFinal{
+    0%,100%{
+        opacity:.10;
+    }
+
+    50%{
+        opacity:.40;
+    }
+}
