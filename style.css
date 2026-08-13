@@ -2325,19 +2325,50 @@ section.reference-hero::after{
     animation:none !important;
   }
 }
+
 /* =========================================================
-   GALINDOGAMERBR — CORREÇÃO REAL DO HERO
+   GALINDOGAMERBR — HERO FINAL
+   HEADER SOBREPOSTO + ZERO FAIXA ACIMA/ABAIXO
    NÃO ALTERA A PROPORÇÃO DA ARTE
-   NÃO CRIA FAIXAS
-   NÃO DEFORMA
-   ANIMAÇÃO APENAS NA ILUMINAÇÃO
    ========================================================= */
 
+/* O cabeçalho fica sobre o Hero, em vez de criar uma faixa
+   escura antes dele. */
+.site-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+
+  margin: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+
+  background: linear-gradient(
+    180deg,
+    rgba(2,6,10,.88) 0%,
+    rgba(2,6,10,.58) 58%,
+    rgba(2,6,10,0) 100%
+  ) !important;
+
+  backdrop-filter: blur(5px) !important;
+}
+
+/* Hero começa no topo real da página. */
+main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* A imagem determina naturalmente a altura do Hero. */
 section.reference-hero {
   position: relative !important;
+  display: block !important;
 
   width: 100% !important;
   height: auto !important;
+
   min-height: 0 !important;
   max-height: none !important;
 
@@ -2353,13 +2384,10 @@ section.reference-hero {
 
   transform: none !important;
   scale: none !important;
-  animation: none !important;
 }
 
-/* A IMAGEM É QUEM DEFINE A ALTURA DO HERO */
+/* Sem altura artificial e sem object-fit que deforme a foto. */
 section.reference-hero > .hero-cinematic-image {
-  position: relative !important;
-
   display: block !important;
 
   width: 100% !important;
@@ -2374,166 +2402,148 @@ section.reference-hero > .hero-cinematic-image {
   margin: 0 !important;
   padding: 0 !important;
 
-  object-fit: contain !important;
-  object-position: center center !important;
+  object-fit: initial !important;
+  object-position: initial !important;
 
   transform: none !important;
   scale: none !important;
-
-  z-index: 1 !important;
 }
 
-/* Remove qualquer camada que possa criar outra composição */
+/* A arte já possui o logo. */
 section.reference-hero .hero-brand-overlay {
   display: none !important;
 }
 
-/* =========================================================
-   ANIMAÇÃO — RESPIRAÇÃO DOURADA DISCRETA
-   A IMAGEM NÃO SE MOVE.
-   ========================================================= */
-
-section.reference-hero::before {
-  content: "" !important;
-
-  position: absolute !important;
-  inset: 0 !important;
-
-  z-index: 5 !important;
-  pointer-events: none !important;
-
-  background:
-    radial-gradient(
-      ellipse at 52% 48%,
-      rgba(217,177,79,.16) 0%,
-      rgba(217,177,79,.07) 25%,
-      rgba(217,177,79,.025) 48%,
-      transparent 70%
-    ) !important;
-
-  opacity: .18 !important;
-
-  animation: galindoHeroRespirar 7s ease-in-out infinite !important;
-}
-
-/* Segundo efeito: passagem de luz MUITO discreta */
-section.reference-hero::after {
-  content: "" !important;
-
-  position: absolute !important;
-
-  top: 0 !important;
-  bottom: 0 !important;
-
-  left: -25% !important;
-
-  width: 12% !important;
-
-  z-index: 6 !important;
-  pointer-events: none !important;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(217,177,79,.10),
-      transparent
-    ) !important;
-
-  filter: blur(6px) !important;
-
-  transform: skewX(-12deg) !important;
-
-  animation: galindoHeroLuz 12s ease-in-out infinite !important;
-}
-
-/* =========================================================
-   CAMADAS EXISTENTES
-   ========================================================= */
-
+/* Camadas ficam sobre a imagem sem alterar sua geometria. */
 section.reference-hero .hero-particles,
 section.reference-hero .hero-scan,
 section.reference-hero .hero-hotspots {
   position: absolute !important;
   inset: 0 !important;
-
   width: 100% !important;
   height: 100% !important;
 }
 
 section.reference-hero .hero-hotspots {
   z-index: 20 !important;
-  pointer-events: none !important;
 }
 
-section.reference-hero .hotspot {
-  pointer-events: auto !important;
-
+/* Retângulo do mouse eliminado. */
+section.reference-hero .hotspot,
+section.reference-hero .hotspot:hover,
+section.reference-hero .hotspot:focus,
+section.reference-hero .hotspot:focus-visible,
+section.reference-hero .hotspot:active {
   background: transparent !important;
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
-
   transform: none !important;
   scale: none !important;
 }
 
 /* =========================================================
-   ANIMAÇÕES
+   REMOVE O ESPAÇO QUE APARECIA DEPOIS DO HERO
    ========================================================= */
 
-@keyframes galindoHeroRespirar {
-
-  0%,
-  100% {
-    opacity: .10;
-  }
-
-  50% {
-    opacity: .32;
-  }
-
+section.reference-hero + section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
-@keyframes galindoHeroLuz {
+/* O container da primeira seção não deve recolocar espaço. */
+section.reference-hero + section > .container {
+  padding-top: 0 !important;
+}
 
-  0%,
-  25% {
+/* =========================================================
+   ANIMAÇÃO DISCRETA NO PRÓPRIO HERO
+   A FOTO NÃO SE MOVE.
+   ========================================================= */
+
+section.reference-hero::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+
+  background:
+    radial-gradient(
+      ellipse at 52% 48%,
+      rgba(217,177,79,.14) 0%,
+      rgba(217,177,79,.045) 28%,
+      transparent 68%
+    ) !important;
+
+  opacity: .14 !important;
+  animation: galindoHeroRespirarFinal 7s ease-in-out infinite !important;
+}
+
+section.reference-hero::after {
+  content: "" !important;
+  position: absolute !important;
+
+  top: 0 !important;
+  bottom: 0 !important;
+  left: -25% !important;
+
+  width: 11% !important;
+
+  z-index: 6 !important;
+  pointer-events: none !important;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,215,110,.11),
+    transparent
+  ) !important;
+
+  filter: blur(5px) !important;
+  transform: skewX(-12deg) !important;
+
+  animation: galindoHeroLuzFinal 12s ease-in-out infinite !important;
+}
+
+@keyframes galindoHeroRespirarFinal {
+  0%,100% { opacity: .10; }
+  50% { opacity: .32; }
+}
+
+@keyframes galindoHeroLuzFinal {
+  0%,25% {
     left: -25%;
     opacity: 0;
   }
 
-  40% {
+  42% {
     opacity: .35;
   }
 
-  60% {
+  62% {
     left: 115%;
-    opacity: .18;
+    opacity: .16;
   }
 
-  70%,
-  100% {
+  75%,100% {
     left: 115%;
     opacity: 0;
   }
-
 }
 
-/* =========================================================
-   CELULAR
-   ========================================================= */
+/* Mobile mantém a mesma lógica: imagem natural, sem crop. */
+@media (max-width:650px) {
 
-@media (max-width: 650px) {
+  .site-header {
+    position: absolute !important;
+  }
 
   section.reference-hero {
     width: 100% !important;
-
     height: auto !important;
     min-height: 0 !important;
-
     aspect-ratio: auto !important;
-
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -2543,63 +2553,15 @@ section.reference-hero .hotspot {
     height: auto !important;
   }
 
+  section.reference-hero + section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
 }
 
-/* =========================================================
-   REDUÇÃO DE MOVIMENTO
-   ========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
-
   section.reference-hero::before,
   section.reference-hero::after {
     animation: none !important;
   }
-
-}
-/* =========================================================
-   HERO — REMOVE SOMENTE OS ESPAÇOS EXTERNOS
-   NÃO ALTERA A IMAGEM
-   ========================================================= */
-
-/* O HEADER NÃO DEVE EMPURRAR O HERO PARA BAIXO */
-.site-header {
-  margin-bottom: 0 !important;
-}
-
-/* Hero imediatamente após o cabeçalho */
-.site-header + main > .reference-hero,
-header + main > .reference-hero,
-.reference-hero {
-  margin-top: 0 !important;
-}
-
-/* A primeira seção começa exatamente onde o Hero termina */
-.reference-hero + section {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Remove também a regra global de section especificamente
-   da primeira seção após o Hero */
-.reference-hero + section .container {
-  padding-top: 0 !important;
-}
-
-/* Não cria espaço artificial no final do Hero */
-.reference-hero {
-  margin-bottom: 0 !important;
-}
-
-/* =========================================================
-   IMPORTANTE:
-   A ARTE CONTINUA SENDO DIMENSIONADA PELA PRÓPRIA IMAGEM
-   ========================================================= */
-
-.reference-hero .hero-cinematic-image {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
