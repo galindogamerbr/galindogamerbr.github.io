@@ -2325,3 +2325,235 @@ section.reference-hero::after{
     animation:none !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — CORREÇÃO REAL DO HERO
+   NÃO ALTERA A PROPORÇÃO DA ARTE
+   NÃO CRIA FAIXAS
+   NÃO DEFORMA
+   ANIMAÇÃO APENAS NA ILUMINAÇÃO
+   ========================================================= */
+
+section.reference-hero {
+  position: relative !important;
+
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  aspect-ratio: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow: hidden !important;
+
+  background: #03070b !important;
+  background-image: none !important;
+
+  transform: none !important;
+  scale: none !important;
+  animation: none !important;
+}
+
+/* A IMAGEM É QUEM DEFINE A ALTURA DO HERO */
+section.reference-hero > .hero-cinematic-image {
+  position: relative !important;
+
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  transform: none !important;
+  scale: none !important;
+
+  z-index: 1 !important;
+}
+
+/* Remove qualquer camada que possa criar outra composição */
+section.reference-hero .hero-brand-overlay {
+  display: none !important;
+}
+
+/* =========================================================
+   ANIMAÇÃO — RESPIRAÇÃO DOURADA DISCRETA
+   A IMAGEM NÃO SE MOVE.
+   ========================================================= */
+
+section.reference-hero::before {
+  content: "" !important;
+
+  position: absolute !important;
+  inset: 0 !important;
+
+  z-index: 5 !important;
+  pointer-events: none !important;
+
+  background:
+    radial-gradient(
+      ellipse at 52% 48%,
+      rgba(217,177,79,.16) 0%,
+      rgba(217,177,79,.07) 25%,
+      rgba(217,177,79,.025) 48%,
+      transparent 70%
+    ) !important;
+
+  opacity: .18 !important;
+
+  animation: galindoHeroRespirar 7s ease-in-out infinite !important;
+}
+
+/* Segundo efeito: passagem de luz MUITO discreta */
+section.reference-hero::after {
+  content: "" !important;
+
+  position: absolute !important;
+
+  top: 0 !important;
+  bottom: 0 !important;
+
+  left: -25% !important;
+
+  width: 12% !important;
+
+  z-index: 6 !important;
+  pointer-events: none !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(217,177,79,.10),
+      transparent
+    ) !important;
+
+  filter: blur(6px) !important;
+
+  transform: skewX(-12deg) !important;
+
+  animation: galindoHeroLuz 12s ease-in-out infinite !important;
+}
+
+/* =========================================================
+   CAMADAS EXISTENTES
+   ========================================================= */
+
+section.reference-hero .hero-particles,
+section.reference-hero .hero-scan,
+section.reference-hero .hero-hotspots {
+  position: absolute !important;
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+}
+
+section.reference-hero .hero-hotspots {
+  z-index: 20 !important;
+  pointer-events: none !important;
+}
+
+section.reference-hero .hotspot {
+  pointer-events: auto !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+
+  transform: none !important;
+  scale: none !important;
+}
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes galindoHeroRespirar {
+
+  0%,
+  100% {
+    opacity: .10;
+  }
+
+  50% {
+    opacity: .32;
+  }
+
+}
+
+@keyframes galindoHeroLuz {
+
+  0%,
+  25% {
+    left: -25%;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: .35;
+  }
+
+  60% {
+    left: 115%;
+    opacity: .18;
+  }
+
+  70%,
+  100% {
+    left: 115%;
+    opacity: 0;
+  }
+
+}
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  section.reference-hero {
+    width: 100% !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    aspect-ratio: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  section.reference-hero > .hero-cinematic-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+}
+
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  section.reference-hero::before,
+  section.reference-hero::after {
+    animation: none !important;
+  }
+
+}
