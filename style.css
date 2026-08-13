@@ -2156,154 +2156,89 @@ header + .hero,
 }
 
 /* =========================================================
-   GALINDOGAMERBR — RESTAURAÇÃO + HERO DEFINITIVO
-   Base preservada do style.css original enviado pelo usuário.
-   O bloco abaixo é a ÚNICA correção nova do Hero.
+   HERO — CORREÇÃO REAL DAS FAIXAS E DA PROPORÇÃO
+   A arte hero-cinematic-clean.png é 2048 x 305.
+   O problema era o .reference-hero, que é um <section> e
+   herdava padding/alturas de versões anteriores.
    ========================================================= */
 
-/* ---------- HERO: ZERA TODAS AS DIMENSÕES ARTIFICIAIS ---------- */
-.reference-hero{
-  position:relative !important;
+/* O seletor "section.reference-hero" vence as regras genéricas
+   de section e as versões antigas do Hero. */
+section.reference-hero{
   display:block !important;
+
   width:100% !important;
-  height:auto !important;
+
+  /* EXATAMENTE a proporção da arte */
+  aspect-ratio:2048 / 305 !important;
+
+  /* Altura calculada pela largura da viewport */
+  height:calc(100vw * 305 / 2048) !important;
+
   min-height:0 !important;
   max-height:none !important;
-  aspect-ratio:auto !important;
 
   margin:0 !important;
   padding:0 !important;
+
   border:0 !important;
   overflow:hidden !important;
-  box-sizing:border-box !important;
 
   background-color:#03070b !important;
-  background-image:none !important;
-  animation:none !important;
+  background-image:url("assets/hero-cinematic-clean.png") !important;
+  background-repeat:no-repeat !important;
+
+  /* Mesma proporção da caixa = zero deformação */
+  background-size:100% 100% !important;
+  background-position:center center !important;
+
   transform:none !important;
+  animation:none !important;
 }
 
-/* A arte é uma IMG normal: ela define a altura real.
-   Isso elimina corte e deformação. */
-.reference-hero > .hero-cinematic-image{
+/* Não existe espaço acima/abaixo criado por conteúdo interno. */
+section.reference-hero > *{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+
+/* A imagem HTML, quando presente, segue a mesma proporção.
+   Não cria uma segunda altura nem estica. */
+section.reference-hero > .hero-cinematic-image{
   display:block !important;
   width:100% !important;
-  height:auto !important;
-  min-width:0 !important;
-  min-height:0 !important;
+  height:100% !important;
   max-width:none !important;
-  max-height:none !important;
+  min-width:0 !important;
   margin:0 !important;
   padding:0 !important;
-  border:0 !important;
-  object-fit:contain !important;
+  object-fit:fill !important;
   object-position:center center !important;
   transform:none !important;
 }
 
-/* Compatibilidade caso o index antigo ainda esteja usando background. */
-.reference-hero:not(:has(> .hero-cinematic-image)){
-  aspect-ratio:2048 / 305 !important;
-  background-image:url("assets/hero-cinematic-clean.png") !important;
-  background-repeat:no-repeat !important;
-  background-position:center top !important;
-  background-size:100% auto !important;
-}
-
-/* Remove logo HTML duplicado. A arte já possui o logo. */
-.reference-hero .hero-brand-overlay,
-.reference-hero .hero-brand-overlay img,
-.hero-brand-overlay{
+/* O logo já está dentro da própria arte. */
+section.reference-hero .hero-brand-overlay,
+section.reference-hero .hero-brand-overlay img{
   display:none !important;
 }
 
-/* Camadas do Hero não entram no cálculo de altura. */
-.reference-hero .hero-particles,
-.reference-hero .hero-scan,
-.reference-hero .hero-hotspots{
+/* Camadas de animação ocupam a caixa exata do Hero. */
+section.reference-hero .hero-particles,
+section.reference-hero .hero-scan,
+section.reference-hero .hero-hotspots{
   position:absolute !important;
   inset:0 !important;
   width:100% !important;
   height:100% !important;
-  margin:0 !important;
-  padding:0 !important;
 }
 
-/* ---------- ANIMAÇÃO: DISCRETA E VISÍVEL ---------- */
-.reference-hero::before{
-  content:"" !important;
-  position:absolute !important;
-  inset:0 !important;
-  z-index:5 !important;
-  pointer-events:none !important;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 45%,
-      rgba(255,210,90,.17) 0%,
-      rgba(255,210,90,.05) 27%,
-      transparent 64%
-    ) !important;
-
-  opacity:.16 !important;
-  animation:galindoHeroBreathFinal 6.5s ease-in-out infinite !important;
-}
-
-.reference-hero::after{
-  content:"" !important;
-  position:absolute !important;
-  top:-20% !important;
-  bottom:-20% !important;
-  left:-28% !important;
-  width:17% !important;
-  z-index:6 !important;
-  pointer-events:none !important;
-
-  background:linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,255,255,.02) 22%,
-    rgba(255,215,110,.22) 50%,
-    rgba(255,255,255,.02) 78%,
-    transparent 100%
-  ) !important;
-
-  filter:blur(2px) !important;
-  transform:skewX(-14deg) !important;
-  animation:galindoHeroSweepFinal 9s ease-in-out infinite !important;
-}
-
-/* Partículas: discretas, sem mover a arte. */
-.reference-hero .hero-particles{
-  z-index:7 !important;
-  pointer-events:none !important;
-}
-
-.reference-hero .hero-particles::before,
-.reference-hero .hero-particles::after{
-  animation:galindoHeroParticlesFinal 8s ease-in-out infinite alternate !important;
-}
-
-/* Scanline fica bem fraca. */
-.reference-hero .hero-scan{
-  z-index:8 !important;
-  opacity:.12 !important;
-  pointer-events:none !important;
-  animation:galindoHeroScanFinal 6s linear infinite !important;
-}
-
-/* Hotspots ficam invisíveis; só recebem o clique. */
-.reference-hero .hero-hotspots{
-  z-index:20 !important;
-  pointer-events:none !important;
-}
-
-.reference-hero .hotspot,
-.reference-hero .hotspot:hover,
-.reference-hero .hotspot:focus,
-.reference-hero .hotspot:focus-visible,
-.reference-hero .hotspot:active{
-  pointer-events:auto !important;
+/* Hotspots transparentes: nada de retângulo no mouse. */
+section.reference-hero .hotspot,
+section.reference-hero .hotspot:hover,
+section.reference-hero .hotspot:focus,
+section.reference-hero .hotspot:focus-visible,
+section.reference-hero .hotspot:active{
   background:transparent !important;
   border:0 !important;
   outline:0 !important;
@@ -2313,73 +2248,80 @@ header + .hero,
   transition:none !important;
 }
 
-/* Nenhum hover/tilt pode alterar a geometria do Hero. */
-.reference-hero,
-.reference-hero:hover,
-.reference-hero > .hero-cinematic-image,
-.reference-hero:hover > .hero-cinematic-image{
-  transform:none !important;
-  scale:none !important;
+/* Animação sutil, visível no próprio Hero. */
+section.reference-hero::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:20 !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(
+      ellipse at 52% 48%,
+      rgba(255,210,90,.15) 0%,
+      rgba(255,210,90,.045) 30%,
+      transparent 65%
+    ) !important;
+  opacity:.18 !important;
+  animation:galindoHeroRespiraDefinitivo 7s ease-in-out infinite !important;
 }
 
-/* A seção seguinte não cria faixa clara extra. */
-.reference-hero + section{
-  margin-top:0 !important;
+section.reference-hero::after{
+  content:"" !important;
+  position:absolute !important;
+  top:-20% !important;
+  bottom:-20% !important;
+  left:-30% !important;
+  width:16% !important;
+  z-index:21 !important;
+  pointer-events:none !important;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,215,110,.16),
+    transparent
+  ) !important;
+  filter:blur(2px) !important;
+  transform:skewX(-14deg) !important;
+  animation:galindoHeroLuzDefinitiva 9s ease-in-out infinite !important;
 }
 
-/* ---------- KEYFRAMES ---------- */
-@keyframes galindoHeroBreathFinal{
+@keyframes galindoHeroRespiraDefinitivo{
   0%,100%{opacity:.12}
   50%{opacity:.40}
 }
 
-@keyframes galindoHeroSweepFinal{
-  0%,18%{left:-28%;opacity:0}
+@keyframes galindoHeroLuzDefinitiva{
+  0%,18%{left:-30%;opacity:0}
   30%{opacity:1}
-  55%{left:118%;opacity:.78}
-  68%,100%{left:118%;opacity:0}
+  55%{left:118%;opacity:.72}
+  70%,100%{left:118%;opacity:0}
 }
 
-@keyframes galindoHeroParticlesFinal{
-  0%{transform:translate3d(0,0,0)}
-  50%{transform:translate3d(10px,-6px,0)}
-  100%{transform:translate3d(-6px,7px,0)}
-}
-
-@keyframes galindoHeroScanFinal{
-  0%{background-position:0 -220px}
-  100%{background-position:0 220px}
-}
-
-/* Mobile: continua usando a altura natural da imagem. */
+/* Mobile: mesma proporção, sem faixas e sem crop. */
 @media(max-width:650px){
-  .reference-hero{
+  section.reference-hero{
     width:100% !important;
-    height:auto !important;
+    aspect-ratio:2048 / 305 !important;
+    height:calc(100vw * 305 / 2048) !important;
     min-height:0 !important;
     max-height:none !important;
-    aspect-ratio:auto !important;
     padding:0 !important;
-    background-image:none !important;
+    margin:0 !important;
+    background-size:100% 100% !important;
+    background-position:center center !important;
   }
 
-  .reference-hero > .hero-cinematic-image{
+  section.reference-hero > .hero-cinematic-image{
     width:100% !important;
-    height:auto !important;
-  }
-
-  .reference-hero .hero-particles::before,
-  .reference-hero .hero-particles::after{
-    opacity:.20 !important;
+    height:100% !important;
+    object-fit:fill !important;
   }
 }
 
 @media(prefers-reduced-motion:reduce){
-  .reference-hero::before,
-  .reference-hero::after,
-  .reference-hero .hero-particles::before,
-  .reference-hero .hero-particles::after,
-  .reference-hero .hero-scan{
+  section.reference-hero::before,
+  section.reference-hero::after{
     animation:none !important;
   }
 }
