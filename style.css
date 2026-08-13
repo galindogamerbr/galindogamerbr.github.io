@@ -351,3 +351,103 @@ html{scroll-behavior:smooth}
     animation:none !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — PATCH HERO DEFINITIVO
+   Corrige o recorte causado pela altura artificial do .hero.
+   IMPORTANTE: este bloco deve ficar NO FINAL do style.css.
+   ========================================================= */
+
+/* O Hero deve ser dimensionado pela própria arte. */
+.hero{
+  position:relative !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  background:#03070b !important;
+  transform:none !important;
+}
+
+/* Se a arte estiver como imagem HTML, ela passa a definir
+   naturalmente a altura do Hero, sem crop e sem deformação. */
+.hero > img,
+.hero .hero-cinematic-image{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  margin:0 !important;
+  padding:0 !important;
+  transform:none !important;
+}
+
+/* Se a arte estiver como background em vez de <img>. */
+.hero:not(:has(> img)):not(:has(.hero-cinematic-image)){
+  aspect-ratio:2048 / 305 !important;
+  background-image:url('assets/hero-cinematic-clean.png') !important;
+  background-repeat:no-repeat !important;
+  background-position:center top !important;
+  background-size:100% auto !important;
+}
+
+/* Nenhum hover pode aumentar ou deslocar a arte. */
+.hero,
+.hero:hover,
+.hero img,
+.hero:hover img,
+.hero .hero-cinematic-image,
+.hero:hover .hero-cinematic-image{
+  transform:none !important;
+  scale:none !important;
+}
+
+/* Os efeitos ficam por cima, mas não alteram a geometria. */
+.hero::before,
+.hero::after{
+  pointer-events:none !important;
+}
+
+/* Remove qualquer margem/padding que esteja empurrando a arte. */
+.hero > :first-child{
+  margin-top:0 !important;
+}
+
+.hero .container{
+  margin-top:0 !important;
+}
+
+/* Responsivo: a imagem continua determinando a altura. */
+@media(max-width:1180px){
+  .hero{
+    aspect-ratio:auto !important;
+  }
+
+  .hero > img,
+  .hero .hero-cinematic-image{
+    width:100% !important;
+    height:auto !important;
+  }
+}
+
+@media(max-width:650px){
+  .hero{
+    aspect-ratio:auto !important;
+    height:auto !important;
+    min-height:0 !important;
+  }
+
+  .hero > img,
+  .hero .hero-cinematic-image{
+    width:100% !important;
+    height:auto !important;
+  }
+}
