@@ -60,6 +60,12 @@
     });
   }
 
+  // Remove emojis do título vindo do YouTube (ex.: "👨‍🌾 Fazenda Nova Aliança #201👨‍🌾").
+  const stripEmoji = (s) => s
+    .replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}️‍]/gu, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
   // Atualiza a área da última live. O GitHub Actions mantém latest-live.json atualizado.
   async function loadLatestLive() {
     const box = $('[data-latest-live]');
@@ -70,23 +76,20 @@
       const data = await res.json();
       if (!data || !data.videoId) return;
 
-      const img = $('[data-live-thumb]', box);
+      const cleanTitle = data.title ? stripEmoji(data.title) : '';
+
       const title = $('[data-live-title]', box);
-      const date = $('[data-live-date]', box);
       const link = $('[data-live-link]', box);
-      if (img) {
-        img.src = data.thumbnail || `https://i.ytimg.com/vi/${data.videoId}/maxresdefault.jpg`;
-        img.alt = data.title ? `Última live: ${data.title}` : 'Última live do GalindoGamerBR';
-      }
-      if (title) title.textContent = data.title || 'Última live do GalindoGamerBR';
-      if (date && data.publishedAt) {
-        const d = new Date(data.publishedAt);
-        date.textContent = Number.isNaN(d.getTime()) ? '' : `Última live • ${d.toLocaleDateString('pt-BR')}`;
-      }
+      if (title) title.textContent = cleanTitle || 'Última live do GalindoGamerBR';
       if (link) {
         link.href = data.url || `https://www.youtube.com/watch?v=${encodeURIComponent(data.videoId)}`;
       }
       box.classList.add('loaded');
+
+      const embed = $('[data-live-embed]');
+      if (embed) {
+        embed.src = `https://www.youtube.com/embed/${encodeURIComponent(data.videoId)}?autoplay=0`;
+      }
     } catch (err) {
       // Mantém o card estático como fallback se o arquivo ainda não tiver sido gerado.
       box.classList.add('fallback');
