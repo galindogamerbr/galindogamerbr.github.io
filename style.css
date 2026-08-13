@@ -2565,3 +2565,36 @@ section.reference-hero::after {
     animation: none !important;
   }
 }
+/* =========================================================
+   HERO — ENCOSTAR A SEÇÃO SEGUINTE NA ARTE
+   ========================================================= */
+
+.reference-hero {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Remove qualquer espaço entre o Hero e TRANSMISSÕES */
+.reference-hero + section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Impede o container da seção de criar espaço no topo */
+.reference-hero + section > .container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove possíveis pseudo-espaços */
+.reference-hero + section::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Garante que a última linha da arte seja o fim real do Hero */
+.reference-hero img,
+.reference-hero .hero-cinematic-image {
+  display: block !important;
+  margin-bottom: 0 !important;
+}
