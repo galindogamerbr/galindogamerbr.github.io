@@ -672,3 +672,72 @@ html{scroll-behavior:smooth}
   }
 
 }
+/* =========================================================
+   HERO — CORREÇÃO DEFINITIVA
+   ARTE REAL: 2048 x 305
+   ========================================================= */
+
+.reference-hero {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 2048 / 305 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  background-color: #03070b !important;
+  background-image: url("assets/hero-cinematic-clean.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% auto !important;
+  background-position: center top !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+.reference-hero .hero-brand-overlay,
+.reference-hero .hero-brand-overlay img {
+  display: none !important;
+}
+
+.reference-hero .hero-particles,
+.reference-hero .hero-scan,
+.reference-hero .hero-hotspots {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.reference-hero,
+.reference-hero:hover,
+.reference-hero * {
+  transform: none !important;
+  scale: none !important;
+}
+
+.reference-hero .hotspot,
+.reference-hero .hotspot:hover,
+.reference-hero .hotspot:focus,
+.reference-hero .hotspot:active {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  scale: none !important;
+}
+
+@media (max-width: 650px) {
+  .reference-hero {
+    width: 100% !important;
+    aspect-ratio: 2048 / 305 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    background-size: 100% auto !important;
+    background-position: center top !important;
+  }
+}
