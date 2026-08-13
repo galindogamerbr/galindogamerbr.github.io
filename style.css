@@ -3845,3 +3845,360 @@ body {
     opacity: .7 !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — ACABAMENTO PREMIUM
+   JOGOS + VIP
+   NÃO ALTERA O HERO
+   ========================================================= */
+
+/* =========================================================
+   JOGOS — CARDS MAIS PREMIUM
+   ========================================================= */
+
+.games-grid .game {
+  position: relative !important;
+  overflow: hidden !important;
+  transform: translateY(0) !important;
+  transition:
+    transform .35s cubic-bezier(.2,.7,.2,1),
+    border-color .35s ease,
+    box-shadow .35s ease !important;
+}
+
+.games-grid .game:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(216,179,91,.75) !important;
+
+  box-shadow:
+    0 22px 45px rgba(0,0,0,.55),
+    0 0 0 1px rgba(216,179,91,.08) !important;
+}
+
+.games-grid .game-media {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.games-grid .game-media::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(0,0,0,.28)
+    ) !important;
+
+  opacity: .65 !important;
+  transition: opacity .35s ease !important;
+}
+
+.games-grid .game:hover .game-media::after {
+  opacity: .35 !important;
+}
+
+.games-grid .game-media img {
+  transition:
+    transform .75s cubic-bezier(.2,.7,.2,1),
+    filter .45s ease !important;
+}
+
+.games-grid .game:hover .game-media img {
+  transform: scale(1.045) !important;
+  filter:
+    saturate(1.08)
+    contrast(1.03)
+    brightness(1.03) !important;
+}
+
+.games-grid .game-body {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.games-grid .game h3 {
+  transition:
+    color .25s ease,
+    transform .25s ease !important;
+}
+
+.games-grid .game:hover h3 {
+  color: #f0d276 !important;
+  transform: translateX(2px) !important;
+}
+
+.games-grid .game .arrow {
+  display: inline-block !important;
+  transition:
+    transform .25s ease,
+    color .25s ease !important;
+}
+
+.games-grid .game:hover .arrow {
+  transform: translateX(5px) !important;
+  color: #f0d276 !important;
+}
+
+
+/* =========================================================
+   ÁREA VIP — ELIMINA O EXCESSO DE ESPAÇO
+   ========================================================= */
+
+.vip {
+  position: relative !important;
+  overflow: hidden !important;
+
+  padding: 28px !important;
+
+  border-color:
+    rgba(216,179,91,.45) !important;
+
+  background:
+    linear-gradient(
+      115deg,
+      #0a1119 0%,
+      #0c151f 55%,
+      #101720 100%
+    ) !important;
+}
+
+/* brilho ambiental discreto */
+.vip::before {
+  content: "" !important;
+  position: absolute !important;
+
+  width: 280px !important;
+  height: 280px !important;
+
+  right: -150px !important;
+  top: -170px !important;
+
+  border-radius: 50% !important;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(216,179,91,.12),
+      transparent 68%
+    ) !important;
+
+  pointer-events: none !important;
+
+  animation: vipGlow 7s ease-in-out infinite !important;
+}
+
+@keyframes vipGlow {
+  0%, 100% {
+    opacity: .45;
+    transform: scale(.95);
+  }
+
+  50% {
+    opacity: .85;
+    transform: scale(1.08);
+  }
+}
+
+.vip > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.vip h2 {
+  margin-bottom: 10px !important;
+}
+
+.vip-lead {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.6 !important;
+}
+
+/*
+   A grade agora ocupa imediatamente o espaço abaixo
+   da explicação, sem aquele "buraco" visual.
+*/
+.vip-layout {
+  margin-top: 18px !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(210px, .38fr) !important;
+
+  gap: 18px !important;
+
+  align-items: stretch !important;
+}
+
+/* passos */
+.steps {
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 9px !important;
+
+  align-content: start !important;
+}
+
+.step {
+  min-height: 108px !important;
+
+  padding: 15px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease,
+    box-shadow .3s ease !important;
+}
+
+.step:hover {
+  transform: translateY(-4px) !important;
+
+  border-color:
+    rgba(216,179,91,.65) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111c27,
+      #0d1721
+    ) !important;
+
+  box-shadow:
+    0 12px 25px rgba(0,0,0,.28) !important;
+}
+
+.step span {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 18px !important;
+  color: var(--gold) !important;
+}
+
+.step h4 {
+  margin: 5px 0 !important;
+}
+
+.step p {
+  line-height: 1.45 !important;
+}
+
+/* coluna de ações */
+.vip-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 9px !important;
+
+  padding: 4px 0 !important;
+}
+
+.vip-actions .btn {
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+.vip-actions .note {
+  margin-top: 3px !important;
+  line-height: 1.5 !important;
+}
+
+
+/* =========================================================
+   BOTÕES VIP
+   ========================================================= */
+
+.vip .btn {
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease !important;
+}
+
+.vip .btn:hover {
+  transform: translateY(-2px) !important;
+
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.35) !important;
+
+  filter: brightness(1.06) !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 1180px) {
+
+  .vip-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .vip-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .vip-actions .note {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .vip {
+    padding: 22px !important;
+  }
+
+  .steps {
+    grid-template-columns: 1fr !important;
+  }
+
+  .step {
+    min-height: 92px !important;
+  }
+
+  .vip-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .vip-actions .note {
+    grid-column: auto !important;
+  }
+
+  .games-grid .game:hover {
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .vip::before {
+    animation: none !important;
+  }
+
+  .games-grid .game,
+  .games-grid .game-media img,
+  .games-grid .game h3,
+  .games-grid .game .arrow,
+  .step,
+  .vip .btn {
+    transition: none !important;
+  }
+}
