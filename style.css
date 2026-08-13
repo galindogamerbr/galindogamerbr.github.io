@@ -2757,3 +2757,135 @@ body {
     margin: 0 !important;
     padding: 0 !important;
 }
+/* =========================================================
+   GALINDOGAMERBR — ANIMAÇÃO PREMIUM DO HERO
+   A imagem NÃO se move e NÃO muda de tamanho.
+   Apenas uma luz ambiente pulsa suavemente.
+   ========================================================= */
+
+.reference-hero {
+    position: relative !important;
+}
+
+/* Luz ambiente */
+.reference-hero::before {
+    content: "" !important;
+
+    position: absolute !important;
+    inset: 0 !important;
+
+    z-index: 5 !important;
+    pointer-events: none !important;
+
+    background:
+        radial-gradient(
+            ellipse at 52% 48%,
+            rgba(255, 196, 70, 0.16) 0%,
+            rgba(255, 196, 70, 0.06) 30%,
+            transparent 68%
+        ) !important;
+
+    opacity: 0.18 !important;
+
+    animation:
+        galindoHeroRespirar
+        7s
+        ease-in-out
+        infinite !important;
+
+    transform: none !important;
+}
+
+/* Um brilho muito suave atravessa a arte */
+.reference-hero::after {
+    content: "" !important;
+
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+
+    left: -20% !important;
+
+    width: 12% !important;
+
+    z-index: 6 !important;
+    pointer-events: none !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 215, 120, 0.10) 50%,
+            transparent 100%
+        ) !important;
+
+    filter: blur(8px) !important;
+
+    transform: skewX(-12deg) !important;
+
+    opacity: 0 !important;
+
+    animation:
+        galindoHeroPassagemLuz
+        14s
+        ease-in-out
+        infinite !important;
+}
+
+/* Respiração — quase imperceptível */
+@keyframes galindoHeroRespirar {
+
+    0%,
+    100% {
+        opacity: 0.12;
+    }
+
+    50% {
+        opacity: 0.30;
+    }
+}
+
+/* Passagem ocasional de luz */
+@keyframes galindoHeroPassagemLuz {
+
+    0%,
+    35% {
+        left: -20%;
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 0.22;
+    }
+
+    65% {
+        left: 115%;
+        opacity: 0.08;
+    }
+
+    75%,
+    100% {
+        left: 115%;
+        opacity: 0;
+    }
+}
+
+/* A animação jamais pode alterar a imagem */
+.reference-hero > img,
+.reference-hero .hero-cinematic-image,
+.reference-hero .hero-brand-overlay {
+    transform: none !important;
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+
+    .reference-hero::before,
+    .reference-hero::after {
+        animation: none !important;
+    }
+
+    .reference-hero::before {
+        opacity: 0.15 !important;
+    }
+}
