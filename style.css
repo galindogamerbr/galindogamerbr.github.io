@@ -2154,3 +2154,208 @@ header + .hero,
     height:auto !important;
   }
 }
+
+/* =========================================================
+   GALINDOGAMERBR — HERO FINAL DE VERDADE
+   Arte real: 2048 x 305
+   Sem faixas pretas, sem deformação e com animação visível.
+   Este bloco fica por último para vencer os overrides antigos.
+   ========================================================= */
+
+/* O Hero tem exatamente a proporção da arte. */
+.reference-hero{
+  position:relative !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:2048 / 305 !important;
+
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  border:0 !important;
+  isolation:isolate !important;
+
+  background-color:#03070b !important;
+  background-image:url("assets/hero-cinematic-clean.png") !important;
+  background-repeat:no-repeat !important;
+  background-position:center center !important;
+  background-size:100% auto !important;
+
+  transform:none !important;
+  animation:none !important;
+}
+
+/* A imagem HTML não participa mais do enquadramento.
+   O background é a arte oficial e ocupa o Hero inteiro. */
+.reference-hero .hero-cinematic-image{
+  display:none !important;
+}
+
+/* Logo extra: a própria arte já contém o logo. */
+.reference-hero .hero-brand-overlay,
+.reference-hero .hero-brand-overlay img{
+  display:none !important;
+}
+
+/* -------- RESPIRAÇÃO DE LUZ -------- */
+.reference-hero::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:2 !important;
+  pointer-events:none !important;
+
+  background:
+    radial-gradient(
+      ellipse at 52% 48%,
+      rgba(255,210,90,.18) 0%,
+      rgba(255,210,90,.07) 27%,
+      transparent 64%
+    ) !important;
+
+  opacity:.18 !important;
+  animation:galindoHeroRespiraFinal 7s ease-in-out infinite !important;
+}
+
+/* -------- FAIXA DE LUZ CINEMATOGRÁFICA -------- */
+.reference-hero::after{
+  content:"" !important;
+  position:absolute !important;
+  top:-20% !important;
+  bottom:-20% !important;
+  left:-30% !important;
+  width:18% !important;
+  z-index:3 !important;
+  pointer-events:none !important;
+
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,.02) 20%,
+    rgba(255,215,110,.22) 50%,
+    rgba(255,255,255,.03) 78%,
+    transparent 100%
+  ) !important;
+
+  filter:blur(3px) !important;
+  transform:skewX(-15deg) !important;
+  animation:galindoHeroLuzFinal 9s cubic-bezier(.4,0,.2,1) infinite !important;
+}
+
+/* Partículas, sem mexer na geometria. */
+.reference-hero .hero-particles{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:4 !important;
+  pointer-events:none !important;
+}
+
+/* Scanline bem discreta. */
+.reference-hero .hero-scan{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:5 !important;
+  pointer-events:none !important;
+  opacity:.12 !important;
+  animation:galindoHeroScanFinal 5s linear infinite !important;
+}
+
+/* Links invisíveis e sem retângulo no hover. */
+.reference-hero .hero-hotspots{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:20 !important;
+  pointer-events:none !important;
+}
+
+.reference-hero .hotspot,
+.reference-hero .hotspot:hover,
+.reference-hero .hotspot:focus,
+.reference-hero .hotspot:focus-visible,
+.reference-hero .hotspot:active{
+  pointer-events:auto !important;
+  background:transparent !important;
+  border:0 !important;
+  outline:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+  scale:none !important;
+  transition:none !important;
+}
+
+/* Nada dentro do Hero recebe tilt/zoom. */
+.reference-hero,
+.reference-hero:hover,
+.reference-hero *{
+  transform:none !important;
+  scale:none !important;
+}
+
+/* A seção seguinte não cria faixa extra. */
+.reference-hero + section{
+  margin-top:0 !important;
+}
+
+/* -------- ANIMAÇÕES -------- */
+@keyframes galindoHeroRespiraFinal{
+  0%,100%{
+    opacity:.12;
+  }
+  50%{
+    opacity:.52;
+  }
+}
+
+@keyframes galindoHeroLuzFinal{
+  0%,18%{
+    left:-30%;
+    opacity:0;
+  }
+  30%{
+    opacity:1;
+  }
+  55%{
+    left:118%;
+    opacity:.82;
+  }
+  68%,100%{
+    left:118%;
+    opacity:0;
+  }
+}
+
+@keyframes galindoHeroScanFinal{
+  0%{
+    background-position:0 -180px;
+  }
+  100%{
+    background-position:0 360px;
+  }
+}
+
+/* Mobile: exatamente a mesma proporção. */
+@media(max-width:650px){
+  .reference-hero{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:2048 / 305 !important;
+    background-size:100% auto !important;
+    background-position:center center !important;
+  }
+}
+
+/* Usuário que prefere menos movimento. */
+@media(prefers-reduced-motion:reduce){
+  .reference-hero::before,
+  .reference-hero::after,
+  .reference-hero .hero-scan{
+    animation:none !important;
+  }
+
+  .reference-hero::before{
+    opacity:.18 !important;
+  }
+}
