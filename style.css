@@ -2889,3 +2889,117 @@ body {
         opacity: 0.15 !important;
     }
 }
+/* =========================================================
+   GALINDOGAMERBR — BRILHO ANIMADO DO HERO
+   SOMENTE EFEITO VISUAL — NÃO ALTERA O ENQUADRAMENTO
+   ========================================================= */
+
+.reference-hero {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* brilho suave que atravessa a arte */
+.reference-hero::after {
+    content: "" !important;
+    position: absolute !important;
+
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -30% !important;
+
+    width: 18% !important;
+
+    z-index: 20 !important;
+    pointer-events: none !important;
+
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 220, 130, 0.04) 20%,
+        rgba(255, 230, 160, 0.20) 50%,
+        rgba(255, 220, 130, 0.04) 80%,
+        transparent 100%
+    ) !important;
+
+    filter: blur(10px) !important;
+
+    transform: skewX(-12deg) !important;
+
+    opacity: 0 !important;
+
+    animation: galindoBrilhoHero 11s ease-in-out infinite !important;
+}
+
+/* pequeno brilho ambiente, quase imperceptível */
+.reference-hero::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+
+    z-index: 19 !important;
+    pointer-events: none !important;
+
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(255, 190, 70, 0.10),
+        transparent 65%
+    ) !important;
+
+    opacity: 0.18 !important;
+
+    animation: galindoRespiracaoHero 6s ease-in-out infinite !important;
+}
+
+/* passagem do brilho */
+@keyframes galindoBrilhoHero {
+
+    0% {
+        left: -30%;
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 0;
+    }
+
+    18% {
+        opacity: 0.9;
+    }
+
+    38% {
+        left: 115%;
+        opacity: 0.45;
+    }
+
+    48% {
+        left: 125%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 125%;
+        opacity: 0;
+    }
+}
+
+/* respiração muito suave */
+@keyframes galindoRespiracaoHero {
+
+    0%,
+    100% {
+        opacity: 0.12;
+    }
+
+    50% {
+        opacity: 0.28;
+    }
+}
+
+/* IMPORTANTE:
+   nenhum elemento da arte pode sofrer zoom ou deslocamento */
+.reference-hero > img,
+.reference-hero .hero-cinematic-image {
+    transform: none !important;
+    scale: 1 !important;
+}
