@@ -2598,3 +2598,74 @@ section.reference-hero::after {
   display: block !important;
   margin-bottom: 0 !important;
 }
+/* =========================================================
+   CORREÇÃO FINAL — ELIMINAR FAIXAS DO HERO
+   NÃO ALTERA A PROPORÇÃO DA IMAGEM
+   ========================================================= */
+
+/* 1 — REMOVE A FAIXA ESCURA ANTES DO HERO */
+.reference-hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Se o primeiro elemento dentro do main estiver criando espaço */
+main > .reference-hero:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remove qualquer espaço vertical do elemento anterior */
+.reference-hero {
+    border-top: 0 !important;
+}
+
+/* =========================================================
+   2 — HERO ENCOSTA DIRETAMENTE EM TRANSMISSÕES
+   ========================================================= */
+
+.reference-hero {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* A próxima seção começa imediatamente */
+.reference-hero + section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Container interno também não pode criar espaço */
+.reference-hero + section .container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Primeiro elemento da seção */
+.reference-hero + section > :first-child {
+    margin-top: 0 !important;
+}
+
+/* =========================================================
+   3 — GARANTE QUE A IMAGEM NÃO CRIE ESPAÇO INVISÍVEL
+   ========================================================= */
+
+.reference-hero img {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* =========================================================
+   4 — NÃO DEIXAR O HERO GANHAR ALTURA EXTRA
+   ========================================================= */
+
+.reference-hero,
+.reference-hero * {
+    box-sizing: border-box !important;
+}
+
+.reference-hero::before,
+.reference-hero::after {
+    pointer-events: none !important;
+}
