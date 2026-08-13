@@ -741,3 +741,107 @@ html{scroll-behavior:smooth}
     background-position: center top !important;
   }
 }
+/* =========================================================
+   GALINDOGAMERBR — HERO DEFINITIVO
+   ARTE: 2048 x 305
+   SEM CORTE
+   SEM DEFORMAÇÃO
+   SEM ALTURA FIXA
+   ========================================================= */
+
+.reference-hero {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  aspect-ratio: 2048 / 305 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+
+  background-color: #03070b !important;
+  background-image: url("assets/hero-cinematic-clean.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+
+  animation: none !important;
+  transform: none !important;
+}
+
+/* A arte já possui o logo */
+.reference-hero .hero-brand-overlay,
+.reference-hero .hero-brand-overlay img {
+  display: none !important;
+}
+
+/* Camadas sobre a arte */
+.reference-hero .hero-particles,
+.reference-hero .hero-scan,
+.reference-hero .hero-hotspots {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Não permitir zoom/deformação */
+.reference-hero,
+.reference-hero:hover,
+.reference-hero *,
+.reference-hero *:hover {
+  transform: none !important;
+  scale: none !important;
+}
+
+/* Hotspots invisíveis */
+.reference-hero .hotspot,
+.reference-hero .hotspot:hover,
+.reference-hero .hotspot:focus,
+.reference-hero .hotspot:active {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  scale: none !important;
+}
+
+/* =========================================================
+   DESKTOP / TABLET
+   ========================================================= */
+
+@media (min-width: 651px) {
+  .reference-hero {
+    aspect-ratio: 2048 / 305 !important;
+    height: auto !important;
+    background-size: 100% auto !important;
+    background-position: center top !important;
+  }
+}
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .reference-hero {
+    aspect-ratio: 2048 / 305 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    background-size: 100% auto !important;
+    background-position: center top !important;
+  }
+
+  .reference-hero .hero-particles::before,
+  .reference-hero .hero-particles::after {
+    opacity: .2 !important;
+  }
+}
