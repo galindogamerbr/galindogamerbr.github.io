@@ -2669,3 +2669,91 @@ main > .reference-hero:first-child {
 .reference-hero::after {
     pointer-events: none !important;
 }
+/* =========================================================
+   GALINDOGAMERBR — AJUSTE REAL DO REFERENCE HERO
+   REMOVE AS DUAS FAIXAS SEM ALTERAR A IMAGEM
+   ========================================================= */
+
+/* HERO REAL DO INDEX */
+main > .reference-hero {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    padding: 0 !important;
+
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+
+    background: #03070b !important;
+}
+
+/* A imagem é quem determina EXATAMENTE a altura do Hero */
+main > .reference-hero > .hero-cinematic-image {
+    display: block !important;
+
+    width: 100% !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    max-width: none !important;
+
+    object-fit: initial !important;
+    object-position: initial !important;
+
+    transform: none !important;
+}
+
+/* =========================================================
+   REMOVE O ESPAÇO ENTRE HERO E TRANSMISSÕES
+   ========================================================= */
+
+main > .reference-hero + #transmissoes {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 55px !important;
+}
+
+/* Container da seção não cria espaço extra */
+main > .reference-hero + #transmissoes > .container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Título pode ter seu espaçamento normal,
+   mas NÃO empurra a seção para baixo */
+main > .reference-hero + #transmissoes .section-head {
+    margin-top: 0 !important;
+}
+
+/* =========================================================
+   REMOVE QUALQUER ESPAÇO ENTRE HEADER E HERO
+   ========================================================= */
+
+.site-header {
+    margin-bottom: 0 !important;
+}
+
+.site-header + main {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.site-header + main > .reference-hero {
+    margin-top: 0 !important;
+}
+
+/* =========================================================
+   GARANTE QUE O BODY NÃO CRIE BORDA/ESPAÇO
+   ========================================================= */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
