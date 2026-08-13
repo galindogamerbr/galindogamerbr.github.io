@@ -2557,3 +2557,49 @@ section.reference-hero .hotspot {
   }
 
 }
+/* =========================================================
+   HERO — REMOVE SOMENTE OS ESPAÇOS EXTERNOS
+   NÃO ALTERA A IMAGEM
+   ========================================================= */
+
+/* O HEADER NÃO DEVE EMPURRAR O HERO PARA BAIXO */
+.site-header {
+  margin-bottom: 0 !important;
+}
+
+/* Hero imediatamente após o cabeçalho */
+.site-header + main > .reference-hero,
+header + main > .reference-hero,
+.reference-hero {
+  margin-top: 0 !important;
+}
+
+/* A primeira seção começa exatamente onde o Hero termina */
+.reference-hero + section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove também a regra global de section especificamente
+   da primeira seção após o Hero */
+.reference-hero + section .container {
+  padding-top: 0 !important;
+}
+
+/* Não cria espaço artificial no final do Hero */
+.reference-hero {
+  margin-bottom: 0 !important;
+}
+
+/* =========================================================
+   IMPORTANTE:
+   A ARTE CONTINUA SENDO DIMENSIONADA PELA PRÓPRIA IMAGEM
+   ========================================================= */
+
+.reference-hero .hero-cinematic-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
